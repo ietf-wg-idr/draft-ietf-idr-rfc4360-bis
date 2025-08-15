@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="rfc7991bis.rnc"?>
+<!-- Need to check the ipr status later. The current value is temporary and keeps xml2rfc happy. -->
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" docName="draft-ietf-idr-rfc4360-bis-00" obsoletes="" updates="" submissionType="IETF" consensus="true" ipr="trust200902" xml:lang="en">
+  <front>
+    <title abbrev="BGP Extended Communities Attribute">
+      BGP Extended Communities Attribute
+    </title>
+    <seriesInfo name="Internet-Draft" value="draft-ietf-idr-rfc4360-bis-00"/>
+    <author fullname="Srihari R. Sangli" initials="S" surname="Sangli">
+      <organization>Cisco Systems, Inc.</organization>
+      <address>
+        <email>rsrihari@cisco.com</email>
+      </address>
+    </author>
+    <author fullname="Dan Tappan" initials="D" surname="Tappan">
+      <organization>Cisco Systems, Inc.</organization>
+      <address>
+        <postal>
+          <street>250 Apollo Drive</street>
+          <city>Chelmsford</city>
+          <region>MA</region>
+          <code>01824</code>
+          <country>USA</country>
+        </postal>
+        <email>tappan@cisco.com</email>
+      </address>
+    </author>
+    <author fullname="Yakov Rekhter" initials="Y" surname="Rekhter">
+      <organization>Juniper Networks, Inc.</organization>
+      <address>
+        <postal>
+          <street>1194 N. Mathilda Ave</street>
+          <city>Sunnyvale</city>
+          <region>CA</region>
+          <code>94089</code>
+          <country>USA</country>
+        </postal>
+        <email>yakov@juniper.net</email>
+      </address>
+    </author>
+    <date year="2025"/> <!-- keeps xml2rfc happy -->
+    <area>Routing Area</area>
+    <workgroup>IDR Working Group</workgroup>
+    <keyword>RFC</keyword>
+    <keyword>Request for Comments</keyword>
+    <keyword>I-D</keyword>
+    <keyword>Internet-Draft</keyword>
+    <keyword>BGP, Extended Community</keyword>
+    <abstract>
+      <t>
+        This document describes the "extended community" BGP-4 attribute.
+        This attribute provides a mechanism for labeling information carried
+        in BGP-4.  These labels can be used to control the distribution of
+        this information, or for other applications.
+      </t>
+    </abstract>
+  </front>
+
+  <middle>
+    <section>
+      <name>Introduction</name>
+      <t>
+        The Extended Community Attribute provides a mechanism for labeling information carried in BGP-4 <xref target="RFC4271"/>.
+        It provides two important enhancements over the existing BGP Community Attribute <xref target="RFC1997"/>:
+      </t>
+      <ul>
+        <li>An extended range, ensuring that communities can be assigned for a plethora of uses, without fear of overlap.</li>
+        <li>The addition of a Type field provides structure for the community space.</li>
+      </ul>
+      <t>
+        The addition of structure allows the usage of policy based on the application for which the community value will be used. For
+        example, one can filter out all communities of a particular type, or allow only certain values for a particular type of community.
+        It also allows one to specify whether a particular community is transitive or non-transitive across an Autonomous System (AS)
+        boundary. Without structure, this can only be accomplished by explicitly enumerating all community values that will be denied or
+        allowed and passed to BGP speakers in neighboring ASes based on the transitive property.
+      </t>
+      <section title="Requirements Language" anchor="requirements">
+        <t>
+          The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL"
+          in this document are to be interpreted as described in RFC2119 <xref target="RFC2119"/>.
+        </t>
+      </section>
+    </section>
+
+    <section title="BGP Extended Communities Attribute">
+      <t>
+        The Extended Communities Attribute is a transitive optional BGP attribute, with the Type Code 16. The attribute consists of a set
+        of "extended communities". All routes with the Extended Communities attribute belong to the communities listed in the attribute.
+      </t>
+      <dl newline="true">
+        <dt>
+          Each Extended Community is encoded as an 8-octet quantity, as follows:
+        </dt>
+        <dd>
+          <figure>
+            <artwork type="ascii-art">
+              <![CDATA[
+ 
+- Type Field  : 1 or 2 octets
+- Value Field : Remaining octets
+
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|  Type high    |  Type low(*)  |                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+          Value                |
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+(*) Present for Extended types only, used for the Value field
+    otherwise.
+                ]]>
+            </artwork>
+          </figure>
+          <dl newline="true">
+            <dt>Type Field:</dt>
+            <dd>
+              <t>
+                Two classes of Type Field are introduced: Regular type and Extended type.
+              </t>
+              <t>
+                The size of Type Field for Regular types is 1 octet, and the size of the Type Field for Extended types is 2 octets.
+              </t>
+              <t>
+                The value of the high-order octet of the Type Field determines if an extended community is a Regular type or an Extended type.
+                The class of a type (Regular or Extended) is not encoded in the structure of the type itself. The class of a type is specified
+                in the document that defines the type and the IANA registry.
+              </t>
+              <dl newline="true">
+                <dt>
+                  The high-order octet of the Type Field is as shown below:
+                </dt>
+                <dd>
+                  <figure>
+                    <artwork type="ascii-art">
+                      <![CDATA[
+ 
+ 0 1 2 3 4 5 6 7
++-+-+-+-+-+-+-+-+
+|I|T|           |
++-+-+-+-+-+-+-+-+
+                        ]]>
+                    </artwork>
+                  </figure>
+                  <dl newline="true">
+                    <dt>I - IANA authority bit</dt>
+                    <dd>
+                      <dl>
+                        <dt>Value 0:</dt>
+                        <dd>IANA-assignable type using the "First Come First Serve" policy</dd>
+                        <dt>Value 1:</dt>
+                        <dd>
+                          Part of this Type Field space is for IANA assignable types using either the Standard Action or the Early IANA
+                          Allocation policy. The rest of this Type Field space is for Experimental use.
+                        </dd>
+                      </dl>
+                    </dd>
+                    <dt>T - Transitive bit</dt>
+                    <dd>
+                      <dl>
+                        <dt>Value 0:</dt>
+                        <dd>The community is transitive across ASes</dd>
+                        <dt>Value 1:</dt>
+                        <dd>The community is non-transitive across ASes</dd>
+                      </dl>
+                    </dd>
+                    <dt>Remaining 6 bits:</dt>
+                    <dd>Indicates the structure of the community</dd>
+                  </dl>
+                </dd>
+              </dl>
+            </dd>
+            <dt>Value Field:</dt>
+            <dd>
+              The encoding of the Value Field is dependent on the "type" of the community as specified by the Type Field.
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+      <t>
+        Two extended communities are declared equal only when all 8 octets of the community are equal.
+      </t>
+      <t>
+        The two members in the tuple &lt;Type, Value&gt; should be enumerated to specify any community value. The remaining octets of the
+        community interpreted based on the value of the Type field.
+      </t>
+    </section>
+
+    <section title="Defined BGP Extended Community Types">
+      <t>
+        This section introduces a few extended types and defines the format of the Value Field for those types. The types introduced here
+        provide "templates", where each template is identified by the high- order octet of the extended community Type field, and the
+        lower-order octet (sub-type) is used to indicate a particular type of extended community.
+      </t>
+
+      <section title="Two-Octet AS Specific Extended Community">
+        <t>
+          This is an extended type with Type Field composed of 2 octets and Value Field composed of 6 octets.
+        </t>
+        <figure>
+          <artwork type="ascii-art">
+            <![CDATA[
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| 0x00 or 0x40  |   Sub-Type    |    Global Administrator       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                     Local Administrator                       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+              ]]>
+          </artwork>
+        </figure>
+        <t>
+          The value of the high-order octet of this extended type is either 0x00 or 0x40. The low-order octet of this extended type is
+          used to indicate sub-types.
+        </t>
+        <dl newline="true">
+          <dt>
+            The Value Field consists of two sub-fields:
+          </dt>
+          <dd>
+            <dl newline="true">
+              <dt>Global Administrator sub-field: 2 octets</dt>
+              <dd>
+                This sub-field contains an Autonomous System number assigned by IANA.
+              </dd>
+              <dt>Local Administrator sub-field: 4 octets</dt>
+              <dd>
+                The organization identified by Autonomous System number in the Global Administrator sub-field can encode any information in
+                this sub-field. The format and meaning of the value encoded in this sub-field should be defined by the sub-type of the
+                community.
+              </dd>
+            </dl>
+          </dd>
+        </dl>
+      </section>
+    
+      <section title="IPv4 Address Specific Extended Community">
+        <t>
+          This is an extended type with Type Field composed of 2 octets and Value Field composed of 6 octets.
+        </t>
+        <figure>
+          <artwork type="ascii-art">
+            <![CDATA[
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| 0x01 or 0x41  |   Sub-Type    |    Global Administrator       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| Global Administrator (cont.)  |    Local Administrator        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+              ]]>
+          </artwork>
+        </figure>
+        <t>
+          The value of the high-order octet of this extended type is either 0x01 or 0x41. The low-order octet of this extended type is used
+          to indicate sub-types.
+        </t>
+        <dl newline="true">
+          <dt>
+            The Value field consists of two sub-fields:
+          </dt>
+          <dd>
+            <dl newline="true">
+              <dt>Global Administrator sub-field: 4 octets</dt>
+              <dd>
+                This sub-field contains an IPv4 unicast address assigned by one of the Internet registries.
+              </dd>
+              <dt>Local Administrator sub-field: 2 octets</dt>
+              <dd>
+                The organization that has been assigned the IPv4 address in the Global Administrator sub-field can encode any information in
+                this sub-field. The format and meaning of this value encoded in this sub-field should be defined by the sub-type of the
+                community.
+              </dd>
+            </dl>
+          </dd>
+        </dl>
+      </section>
+
+      <section title="Opaque Extended Community">
+        <t>
+          This is an extended type with Type Field composed of 2 octets and Value Field composed of 6 octets.
+        </t>
+        <figure>
+          <artwork type="ascii-art">
+            <![CDATA[
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| 0x03 or 0x43  |   Sub-Type    |                Value          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                         Value (cont.)                         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+              ]]>
+          </artwork>
+        </figure>
+        <t>
+          The value of the high-order octet of this extended type is either 0x03 or 0x43. The low-order octet of this extended type is used
+          to indicate sub-types.
+        </t>
+        <t>
+          This is a generic community of extended type. The value of the sub-type that should define the Value Field is to be assigned by
+          IANA.
+        </t>
+      </section>
+    </section>
+
+    <section title="Route Target Community">
+      <t>
+        The Route Target Community identifies one or more routers that may receive a set of routes (that carry this Community) carried by
+        BGP. This is transitive across the Autonomous System boundary.
+      </t>
+      <t>
+        The Route Target Community is of an extended type.
+      </t>
+      <t>
+        The value of the high-order octet of the Type field for the Route Target Community can be 0x00, 0x01, or 0x02. The value of the
+        low- order octet of the Type field for this community is 0x02.
+      </t>
+      <t>
+        When the value of the high-order octet of the Type field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
+        numbering space that is administered by the organization to which the Autonomous System number carried in the Global Administrator
+        sub- field has been assigned by an appropriate authority.
+      </t>
+      <t>
+        When the value of the high-order octet of the Type field is 0x01, the Local Administrator sub-field contains a number from a
+        numbering space that is administered by the organization to which the IP address carried in the Global Administrator sub-field has
+        been assigned by an appropriate authority.
+      </t>
+      <t>
+        One possible use of the Route Target Community is specified in <xref target="RFC4364"/>.
+      </t>
+    </section>
+
+    <section title="Route Origin Community">
+      <t>
+        The Route Origin Community identifies one or more routers that inject a set of routes (that carry this Community) into BGP. This is
+        transitive across the Autonomous System boundary.
+      </t>
+      <t>
+        The Route Origin Community is of an extended type.
+      </t>
+      <t>
+        The value of the high-order octet of the Type field for the Route Origin Community can be 0x00, 0x01, or 0x02. The value of the
+        low- order octet of the Type field for this community is 0x03.
+      </t>
+      <t>
+        When the value of the high-order octet of the Type field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
+        numbering space that is administered by the organization to which the Autonomous System number carried in the Global Administrator
+        sub- field has been assigned by an appropriate authority.
+      </t>
+      <t>
+        When the value of the high-order octet of the Type field is 0x01, the Local Administrator sub-field contains a number from a
+        numbering space that is administered by the organization to which the IP address carried in the Global Administrator sub-field has
+        been assigned by an appropriate authority.
+      </t>
+      <t>
+        One possible use of the Route Origin Community is specified in <xref target="RFC4364"/>.
+      </t>
+    </section>
+
+    <section title="Operations">
+      <t>
+        A BGP speaker may use the Extended Communities attribute to control which routing information it accepts or distributes to its
+        peers.
+      </t>
+      <t>
+        The Extended Community attribute MUST NOT be used to modify the BGP best path selection algorithm in a way that leads to forwarding
+        loops.
+      </t>
+      <t>
+        A BGP speaker receiving a route that doesn't have the Extended Communities attribute MAY append this attribute to the route when
+        propagating it to its peers.
+      </t>
+      <t>
+        A BGP speaker receiving a route with the Extended Communities attribute MAY modify this attribute according to the local policy.
+      </t>
+      <t>
+        By default if a range of routes is to be aggregated and the resultant aggregates path attributes do not carry the ATOMIC_AGGREGATE
+        attribute, then the resulting aggregate should have an Extended Communities path attribute that contains the set union of all the
+        Extended Communities from all of the aggregated routes. The default behavior could be overridden via local configuration, in which
+        case handling the Extended Communities attribute in the presence of route aggregation becomes a matter of the local policy of the
+        BGP speaker that performs the aggregation.
+      </t>
+      <t>
+        If a route has a non-transitivity extended community, then before advertising the route across the Autonomous System boundary the
+        community SHOULD be removed from the route. However, the community SHOULD NOT be removed when advertising the route across the BGP
+        Confederation boundary.
+      </t>
+      <t>
+        A route may carry both the BGP Communities attribute, as defined in
+        <xref target="RFC1997"/>), and the Extended BGP Communities attribute.
+        In this case, the BGP Communities attribute is handled as specified in 
+        <xref target="RFC1997"/>, and the Extended BGP Communities attribute is handled as specified in this document.
+      </t>
+    </section>
+
+    <section title="IANA Considerations">
+      <t>
+        All the BGP Extended Communities contain a Type field. The IANA has created a registry entitled, "BGP Extended Communities Type".
+        The IANA will maintain this registry.
+      </t>
+      <t>
+        The Type could be either regular or extended. For a regular Type the IANA allocates an 8-bit value; for an extended Type the IANA
+        allocates a 16-bit value.
+      </t>
+      <t>
+        The value allocated for a regular Type MUST NOT be reused as the value of the high-order octet when allocating an extended Type.
+        The value of the high-order octet allocated for an extended Type MUST NOT be reused when allocating a regular Type.
+      </t>
+      <t>
+        The Type field indicates where the Extended Community is transitive or not. Future requests for assignment of a Type value must
+        specify whether the Type value is intended for a transitive or a non- transitive Extended Community.
+      </t>
+      <t>
+        Future assignment are to be made using either the Standards Action process defined in
+        <xref target="RFC2434"/>, the Early IANA Allocation process defined in <xref target="RFC4020"/>, 
+        or the "First Come First Served" policy defined in <xref target="RFC2434"/>.
+      </t>
+      <t>
+        The following table summarizes the ranges for the assignment of Types:
+      </t>
+      <figure>
+        <artwork type="ascii-art">
+          <![CDATA[
+
+   Type                        Standard Action         First Come
+                               Early IANA Allocation   First Served
+   ------------------          ---------------------   ------------
+   
+   regular, transitive          0x90-0xbf              0x00-x3f
+   
+   regular, non-transitive      0xd0-0xff              0x40-0x7f
+   
+   extended, transitive         0x9000-0xbfff          0x0000-0x3fff
+   
+   extended, non-transitive     0xd000-0xffff          0x4000-0x7fff
+   
+Assignments consist of a name and the value.
+
+            ]]>
+        </artwork>
+      </figure>
+      <t>
+        The Type values 0x80-0x8f and 0xc0-0xcf for regular Types, and 0x8000-0x8fff and 0xc000-0xcfff for extended Types are for
+        Experimental use as defined in
+        <xref target="RFC3692"/>.
+      </t>
+      <t>
+        This document defines a class of extended communities called two- octet AS specific extended community for which the IANA is to
+        create and maintain a registry entitled "Two-octet AS Specific Extended Community". All the communities in this class are of
+        extended Types. Future assignment are to be made using the "First Come First Served" policy defined in
+        <xref target="RFC2434"/>. 
+        The Type values for the transitive communities of the two-octet AS specific extended community class are 0x0000-0x00ff,
+        and for the non-transitive communities of that class are 0x4000-0x40ff. Assignments consist of a name and the value.
+      </t>
+      <t>
+        This document makes the following assignments for the two-octet AS specific extended community:
+      </t>
+      <figure>
+        <artwork type="ascii-art">
+          <![CDATA[
+   Name                                     Type Value
+   ----                                     ----------
+   two-octet AS specific Route Target       0x0002
+   two-octet AS specific Route Origin       0x0003
+            ]]>
+        </artwork>
+      </figure>
+      <t>
+        This document defines a class of extended communities called IPv4 address specific extended community for which the IANA is to
+        create and maintain a registry entitled "IPv4 Address Specific Extended Community". All the communities in this class are of
+        extended Types. Future assignment are to be made using the "First Come First Served" policy defined in
+        <xref target="RFC2434"/>. 
+        The Type values for the transitive communities of the two-octet AS specific extended community class are 0x0100-0x01ff,
+        and for the non-transitive communities of that class are 0x4100-0x41ff. Assignments consist of a name and the value.
+      </t>
+      <t>
+        This document makes the following assignments for the IPv4 address specific extended community:
+      </t>
+      <figure>
+        <artwork type="ascii-art">
+          <![CDATA[
+   Name                                     Type Value
+   ----                                     ----------
+   IPv4 address specific Route Target       0x0102
+   IPv4 address specific Route Origin       0x0103
+            ]]>
+        </artwork>
+      </figure>
+      <t>
+        This document defines a class of extended communities called opaque extended community for which the IANA is to create and
+        maintain a registry entitled "Opaque Extended Community". All the communities in this class are of extended Types. Future
+        assignment are to be made using the "First Come First Served" policy defined in
+        <xref target="RFC2434"/>. 
+        The Type values for the transitive communities of the opaque extended community class are 0x0300-0x03ff,
+        and for the non-transitive communities of that class are 0x4300-0x43ff. Assignments consist of a name and the value.
+      </t>
+      <t>
+        When requesting an allocation from more than one registry defined above, one may ask for allocating the same Type value from these
+        registries. If possible, the IANA should accommodate such requests.
+      </t>
+    </section>
+
+    <section anchor="Security" title="Security Considerations">
+      <t>
+        This extension to BGP has similar security implications as BGP Communities <xref target="RFC1997"/>.
+      </t>
+      <t>
+        This extension to BGP does not change the underlying security issues. Specifically, an operator who is relying on the information
+        carried in BGP must have a transitive trust relationship back to the source of the information. Specifying the mechanism(s) to
+        provide such a relationship is beyond the scope of this document.
+      </t>
+    </section>
+    <section title="Acknowledgements" anchor="Acknowledgements">
+      <t>
+        The authors would like to thank John Hawkinson, Jeffrey Haas, Bruno Rijsman, Bill Fenner, and Alex Zinin for their suggestions and
+        feedback.
+      </t>
+    </section>
+  </middle>
+
+  <back>
+    <displayreference target="RFC4271" to="BGP-4"/>
+    <references title="Normative References">
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4271.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.1997.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.2434.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.3692.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4020.xml"/>
+    </references>
+    <references title="Informative References">
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4364.xml"/>
+    </references>
+    
+ </back>
+</rfc>
