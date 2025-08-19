@@ -361,7 +361,7 @@
         BGP speaker that performs the aggregation.
       </t>
       <t>
-        If a route has a non-transitivity extended community, then before advertising the route across the Autonomous System boundary the
+        If a route has a non-transitive extended community, then before advertising the route across the Autonomous System boundary the
         community SHOULD be removed from the route. However, the community SHOULD NOT be removed when advertising the route across the BGP
         Confederation boundary.
       </t>
@@ -450,7 +450,7 @@ Assignments consist of a name and the value.
         create and maintain a registry entitled "IPv4 Address Specific Extended Community". All the communities in this class are of
         extended Types. Future assignment are to be made using the "First Come First Served" policy defined in
         <xref target="RFC2434"/>. 
-        The Type values for the transitive communities of the two-octet AS specific extended community class are 0x0100-0x01ff,
+        The Type values for the transitive communities of the IPv4 Address specific extended community class are 0x0100-0x01ff,
         and for the non-transitive communities of that class are 0x4100-0x41ff. Assignments consist of a name and the value.
       </t>
       <t>

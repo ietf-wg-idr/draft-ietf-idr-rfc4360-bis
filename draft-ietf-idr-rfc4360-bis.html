@@ -1716,7 +1716,7 @@ li > p:last-of-type:only-child {
         case handling the Extended Communities attribute in the presence of route aggregation becomes a matter of the local policy of the
         BGP speaker that performs the aggregation.<a href="#section-6-5" class="pilcrow">¶</a></p>
 <p id="section-6-6">
-        If a route has a non-transitivity extended community, then before advertising the route across the Autonomous System boundary the
+        If a route has a non-transitive extended community, then before advertising the route across the Autonomous System boundary the
         community SHOULD be removed from the route. However, the community SHOULD NOT be removed when advertising the route across the BGP
         Confederation boundary.<a href="#section-6-6" class="pilcrow">¶</a></p>
 <p id="section-6-7">
@@ -1796,7 +1796,7 @@ Assignments consist of a name and the value.
         create and maintain a registry entitled "IPv4 Address Specific Extended Community". All the communities in this class are of
         extended Types. Future assignment are to be made using the "First Come First Served" policy defined in
         <span>[<a href="#RFC2434" class="cite xref">RFC2434</a>]</span>. 
-        The Type values for the transitive communities of the two-octet AS specific extended community class are 0x0100-0x01ff,
+        The Type values for the transitive communities of the IPv4 Address specific extended community class are 0x0100-0x01ff,
         and for the non-transitive communities of that class are 0x4100-0x41ff. Assignments consist of a name and the value.<a href="#section-7-12" class="pilcrow">¶</a></p>
 <p id="section-7-13">
         This document makes the following assignments for the IPv4 address specific extended community:<a href="#section-7-13" class="pilcrow">¶</a></p>
