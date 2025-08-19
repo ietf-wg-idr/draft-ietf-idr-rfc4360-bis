@@ -1531,6 +1531,7 @@ li > p:last-of-type:only-child {
         This section introduces a few extended types and defines the format of the Value Field for those types. The types introduced here
         provide "templates", where each template is identified by the high- order octet of the extended community Type field, and the
         lower-order octet (sub-type) is used to indicate a particular type of extended community.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<div id="two-octet-as-ec">
 <section id="section-3.1">
         <h3 id="name-two-octet-as-specific-exten">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-two-octet-as-specific-exten" class="section-name selfRef">Two-Octet AS Specific Extended Community</a>
@@ -1576,6 +1577,8 @@ li > p:last-of-type:only-child {
         <dd class="break"></dd>
 </dl>
 </section>
+</div>
+<div id="ipv4-addr-ec">
 <section id="section-3.2">
         <h3 id="name-ipv4-address-specific-exten">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-ipv4-address-specific-exten" class="section-name selfRef">IPv4 Address Specific Extended Community</a>
@@ -1621,6 +1624,8 @@ li > p:last-of-type:only-child {
         <dd class="break"></dd>
 </dl>
 </section>
+</div>
+<div id="opaque-ec">
 <section id="section-3.3">
         <h3 id="name-opaque-extended-community">
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-opaque-extended-community" class="section-name selfRef">Opaque Extended Community</a>
@@ -1647,6 +1652,7 @@ li > p:last-of-type:only-child {
           This is a generic community of extended type. The value of the sub-type that should define the Value Field is to be assigned by
           IANA.<a href="#section-3.3-4" class="pilcrow">¶</a></p>
 </section>
+</div>
 </section>
 <section id="section-4">
       <h2 id="name-route-target-community">
@@ -1658,8 +1664,9 @@ li > p:last-of-type:only-child {
 <p id="section-4-2">
         The Route Target Community is of an extended type.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <p id="section-4-3">
-        The value of the high-order octet of the Type field for the Route Target Community can be 0x00, 0x01, or 0x02. The value of the
-        low- order octet of the Type field for this community is 0x02.<a href="#section-4-3" class="pilcrow">¶</a></p>
+        The value of the high-order octet of the Type field for the Route Target Community can be 0x00(as defined in
+        <a href="#two-octet-as-ec" class="auto internal xref">Section 3.1</a>), 0x01(as defined in <a href="#ipv4-addr-ec" class="auto internal xref">Section 3.2</a>), or 0x02(as defined in <span>[<a href="#RFC5668" class="cite xref">RFC5668</a>]</span>).
+        The value of the low-order octet of the Type field for this community is 0x02.<a href="#section-4-3" class="pilcrow">¶</a></p>
 <p id="section-4-4">
         When the value of the high-order octet of the Type field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
         numbering space that is administered by the organization to which the Autonomous System number carried in the Global Administrator
@@ -1681,8 +1688,9 @@ li > p:last-of-type:only-child {
 <p id="section-5-2">
         The Route Origin Community is of an extended type.<a href="#section-5-2" class="pilcrow">¶</a></p>
 <p id="section-5-3">
-        The value of the high-order octet of the Type field for the Route Origin Community can be 0x00, 0x01, or 0x02. The value of the
-        low- order octet of the Type field for this community is 0x03.<a href="#section-5-3" class="pilcrow">¶</a></p>
+        The value of the high-order octet of the Type field for the Route Origin Community can be 0x00(as defined in
+        <a href="#two-octet-as-ec" class="auto internal xref">Section 3.1</a>), 0x01(as defined in <a href="#ipv4-addr-ec" class="auto internal xref">Section 3.2</a>), or 0x02(as defined in <span>[<a href="#RFC5668" class="cite xref">RFC5668</a>]</span>).
+        The value of the low-order octet of the Type field for this community is 0x03.<a href="#section-5-3" class="pilcrow">¶</a></p>
 <p id="section-5-4">
         When the value of the high-order octet of the Type field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
         numbering space that is administered by the organization to which the Autonomous System number carried in the Global Administrator
@@ -1884,8 +1892,12 @@ Assignments consist of a name and the value.
 <span class="refAuthor">Kompella, K.</span> and <span class="refAuthor">A. Zinin</span>, <span class="refTitle">"Early IANA Allocation of Standards Track Code Points"</span>, <span class="seriesInfo">RFC 4020</span>, <span class="seriesInfo">DOI 10.17487/RFC4020</span>, <time datetime="2005-02" class="refDate">February 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4020">https://www.rfc-editor.org/info/rfc4020</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC4360">[RFC4360]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Sangli, S.</span>, <span class="refAuthor">Tappan, D.</span>, and <span class="refAuthor">Y. Rekhter</span>, <span class="refTitle">"BGP Extended Communities Attribute"</span>, <span class="seriesInfo">RFC 4360</span>, <span class="seriesInfo">DOI 10.17487/RFC4360</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4360">https://www.rfc-editor.org/info/rfc4360</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5668">[RFC5668]</dt>
+      <dd>
+<span class="refAuthor">Rekhter, Y.</span>, <span class="refAuthor">Sangli, S.</span>, and <span class="refAuthor">D. Tappan</span>, <span class="refTitle">"4-Octet AS Specific BGP Extended Community"</span>, <span class="seriesInfo">RFC 5668</span>, <span class="seriesInfo">DOI 10.17487/RFC5668</span>, <time datetime="2009-10" class="refDate">October 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5668">https://www.rfc-editor.org/info/rfc5668</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>

@@ -171,7 +171,7 @@
         lower-order octet (sub-type) is used to indicate a particular type of extended community.
       </t>
 
-      <section title="Two-Octet AS Specific Extended Community">
+      <section title="Two-Octet AS Specific Extended Community" anchor="two-octet-as-ec">
         <t>
           This is an extended type with Type Field composed of 2 octets and Value Field composed of 6 octets.
         </t>
@@ -213,7 +213,7 @@
         </dl>
       </section>
     
-      <section title="IPv4 Address Specific Extended Community">
+      <section title="IPv4 Address Specific Extended Community" anchor="ipv4-addr-ec">
         <t>
           This is an extended type with Type Field composed of 2 octets and Value Field composed of 6 octets.
         </t>
@@ -255,7 +255,7 @@
         </dl>
       </section>
 
-      <section title="Opaque Extended Community">
+      <section title="Opaque Extended Community" anchor="opaque-ec">
         <t>
           This is an extended type with Type Field composed of 2 octets and Value Field composed of 6 octets.
         </t>
@@ -292,8 +292,9 @@
         The Route Target Community is of an extended type.
       </t>
       <t>
-        The value of the high-order octet of the Type field for the Route Target Community can be 0x00, 0x01, or 0x02. The value of the
-        low- order octet of the Type field for this community is 0x02.
+        The value of the high-order octet of the Type field for the Route Target Community can be 0x00(as defined in
+        <xref target="two-octet-as-ec"/>), 0x01(as defined in <xref target="ipv4-addr-ec"/>), or 0x02(as defined in <xref target="RFC5668"/>).
+        The value of the low-order octet of the Type field for this community is 0x02.
       </t>
       <t>
         When the value of the high-order octet of the Type field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
@@ -319,8 +320,9 @@
         The Route Origin Community is of an extended type.
       </t>
       <t>
-        The value of the high-order octet of the Type field for the Route Origin Community can be 0x00, 0x01, or 0x02. The value of the
-        low- order octet of the Type field for this community is 0x03.
+        The value of the high-order octet of the Type field for the Route Origin Community can be 0x00(as defined in
+        <xref target="two-octet-as-ec"/>), 0x01(as defined in <xref target="ipv4-addr-ec"/>), or 0x02(as defined in <xref target="RFC5668"/>).
+        The value of the low-order octet of the Type field for this community is 0x03.
       </t>
       <t>
         When the value of the high-order octet of the Type field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
@@ -516,6 +518,7 @@ Assignments consist of a name and the value.
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.3692.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4020.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4360.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.5668.xml"/>
     </references>
     <references title="Informative References">
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4364.xml"/>

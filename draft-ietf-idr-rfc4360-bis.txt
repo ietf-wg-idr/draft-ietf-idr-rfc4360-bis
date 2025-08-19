@@ -81,10 +81,10 @@ Table of Contents
    6.  Operations  . . . . . . . . . . . . . . . . . . . . . . . . .   7
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
    8.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
-   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  10
+   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  11
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  11
-     10.2.  Informative References . . . . . . . . . . . . . . . . .  11
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  12
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  12
 
 1.  Introduction
@@ -322,14 +322,14 @@ Internet-Draft     BGP Extended Communities Attribute        August 2025
    The Route Target Community is of an extended type.
 
    The value of the high-order octet of the Type field for the Route
-   Target Community can be 0x00, 0x01, or 0x02.  The value of the low-
-   order octet of the Type field for this community is 0x02.
+   Target Community can be 0x00(as defined in Section 3.1), 0x01(as
+   defined in Section 3.2), or 0x02(as defined in [RFC5668]).  The value
+   of the low-order octet of the Type field for this community is 0x02.
 
-   When the value of the high-order octet of the Type field is 0x00 or
-   0x02, the Local Administrator sub-field contains a number from a
-   numbering space that is administered by the organization to which the
-   Autonomous System number carried in the Global Administrator sub-
-   field has been assigned by an appropriate authority.
+
+
+
+
 
 
 
@@ -337,6 +337,12 @@ Kao                     Expires 20 February 2026                [Page 6]
 
 Internet-Draft     BGP Extended Communities Attribute        August 2025
 
+
+   When the value of the high-order octet of the Type field is 0x00 or
+   0x02, the Local Administrator sub-field contains a number from a
+   numbering space that is administered by the organization to which the
+   Autonomous System number carried in the Global Administrator sub-
+   field has been assigned by an appropriate authority.
 
    When the value of the high-order octet of the Type field is 0x01, the
    Local Administrator sub-field contains a number from a numbering
@@ -356,8 +362,9 @@ Internet-Draft     BGP Extended Communities Attribute        August 2025
    The Route Origin Community is of an extended type.
 
    The value of the high-order octet of the Type field for the Route
-   Origin Community can be 0x00, 0x01, or 0x02.  The value of the low-
-   order octet of the Type field for this community is 0x03.
+   Origin Community can be 0x00(as defined in Section 3.1), 0x01(as
+   defined in Section 3.2), or 0x02(as defined in [RFC5668]).  The value
+   of the low-order octet of the Type field for this community is 0x03.
 
    When the value of the high-order octet of the Type field is 0x00 or
    0x02, the Local Administrator sub-field contains a number from a
@@ -379,13 +386,6 @@ Internet-Draft     BGP Extended Communities Attribute        August 2025
    A BGP speaker may use the Extended Communities attribute to control
    which routing information it accepts or distributes to its peers.
 
-   The Extended Community attribute MUST NOT be used to modify the BGP
-   best path selection algorithm in a way that leads to forwarding
-   loops.
-
-   A BGP speaker receiving a route that doesn't have the Extended
-   Communities attribute MAY append this attribute to the route when
-   propagating it to its peers.
 
 
 
@@ -393,6 +393,14 @@ Kao                     Expires 20 February 2026                [Page 7]
 
 Internet-Draft     BGP Extended Communities Attribute        August 2025
 
+
+   The Extended Community attribute MUST NOT be used to modify the BGP
+   best path selection algorithm in a way that leads to forwarding
+   loops.
+
+   A BGP speaker receiving a route that doesn't have the Extended
+   Communities attribute MAY append this attribute to the route when
+   propagating it to its peers.
 
    A BGP speaker receiving a route with the Extended Communities
    attribute MAY modify this attribute according to the local policy.
@@ -434,14 +442,6 @@ Internet-Draft     BGP Extended Communities Attribute        August 2025
    value of the high-order octet allocated for an extended Type MUST NOT
    be reused when allocating a regular Type.
 
-   The Type field indicates where the Extended Community is transitive
-   or not.  Future requests for assignment of a Type value must specify
-   whether the Type value is intended for a transitive or a non-
-   transitive Extended Community.
-
-
-
-
 
 
 
@@ -449,6 +449,11 @@ Kao                     Expires 20 February 2026                [Page 8]
 
 Internet-Draft     BGP Extended Communities Attribute        August 2025
 
+
+   The Type field indicates where the Extended Community is transitive
+   or not.  Future requests for assignment of a Type value must specify
+   whether the Type value is intended for a transitive or a non-
+   transitive Extended Community.
 
    Future assignment are to be made using either the Standards Action
    process defined in [RFC2434], the Early IANA Allocation process
@@ -494,11 +499,6 @@ Internet-Draft     BGP Extended Communities Attribute        August 2025
       two-octet AS specific Route Target       0x0002
       two-octet AS specific Route Origin       0x0003
 
-   This document defines a class of extended communities called IPv4
-   address specific extended community for which the IANA is to create
-   and maintain a registry entitled "IPv4 Address Specific Extended
-   Community".  All the communities in this class are of extended Types.
-
 
 
 Kao                     Expires 20 February 2026                [Page 9]
@@ -506,6 +506,10 @@ Kao                     Expires 20 February 2026                [Page 9]
 Internet-Draft     BGP Extended Communities Attribute        August 2025
 
 
+   This document defines a class of extended communities called IPv4
+   address specific extended community for which the IANA is to create
+   and maintain a registry entitled "IPv4 Address Specific Extended
+   Community".  All the communities in this class are of extended Types.
    Future assignment are to be made using the "First Come First Served"
    policy defined in [RFC2434].  The Type values for the transitive
    communities of the IPv4 Address specific extended community class are
@@ -545,13 +549,9 @@ Internet-Draft     BGP Extended Communities Attribute        August 2025
    of the information.  Specifying the mechanism(s) to provide such a
    relationship is beyond the scope of this document.
 
-9.  Acknowledgements
 
-   The authors would like to thank the authors of [RFC4360], Srihari R.
-   Sangli, Dan Tappan, and Yakov Rekhter for their work on the original
-   document.  We also wish to thank John Hawkinson, Jeffrey Haas, Bruno
-   Rijsman, Bill Fenner, and Alex Zinin for their suggestions and
-   feedback on that document.
+
+
 
 
 
@@ -561,6 +561,14 @@ Kao                     Expires 20 February 2026               [Page 10]
 
 Internet-Draft     BGP Extended Communities Attribute        August 2025
 
+
+9.  Acknowledgements
+
+   The authors would like to thank the authors of [RFC4360], Srihari R.
+   Sangli, Dan Tappan, and Yakov Rekhter for their work on the original
+   document.  We also wish to thank John Hawkinson, Jeffrey Haas, Bruno
+   Rijsman, Bill Fenner, and Alex Zinin for their suggestions and
+   feedback on that document.
 
    We thank Yakov Rekhter and Alfred Hoenes for pointing out several
    errors in [RFC4360].
@@ -601,15 +609,7 @@ Internet-Draft     BGP Extended Communities Attribute        August 2025
               DOI 10.17487/RFC4020, February 2005,
               <https://www.rfc-editor.org/info/rfc4020>.
 
-   [RFC4360]  Sangli, S., Tappan, D., and Y. Rekhter, "BGP Extended
-              Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,
-              February 2006, <https://www.rfc-editor.org/info/rfc4360>.
 
-10.2.  Informative References
-
-   [RFC4364]  Rosen, E. and Y. Rekhter, "BGP/MPLS IP Virtual Private
-              Networks (VPNs)", RFC 4364, DOI 10.17487/RFC4364, February
-              2006, <https://www.rfc-editor.org/info/rfc4364>.
 
 
 
@@ -618,26 +618,26 @@ Kao                     Expires 20 February 2026               [Page 11]
 Internet-Draft     BGP Extended Communities Attribute        August 2025
 
 
+   [RFC4360]  Sangli, S., Tappan, D., and Y. Rekhter, "BGP Extended
+              Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,
+              February 2006, <https://www.rfc-editor.org/info/rfc4360>.
+
+   [RFC5668]  Rekhter, Y., Sangli, S., and D. Tappan, "4-Octet AS
+              Specific BGP Extended Community", RFC 5668,
+              DOI 10.17487/RFC5668, October 2009,
+              <https://www.rfc-editor.org/info/rfc5668>.
+
+10.2.  Informative References
+
+   [RFC4364]  Rosen, E. and Y. Rekhter, "BGP/MPLS IP Virtual Private
+              Networks (VPNs)", RFC 4364, DOI 10.17487/RFC4364, February
+              2006, <https://www.rfc-editor.org/info/rfc4364>.
+
 Author's Address
 
    Nat Kao (editor)
    Individual Contributor
    Email: pyxislx@gmail.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
