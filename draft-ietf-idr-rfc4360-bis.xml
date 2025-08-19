@@ -137,9 +137,26 @@
                     <dd>
                       <dl>
                         <dt>Value 0:</dt>
-                        <dd>The community is transitive across ASes</dd>
+                        <dd>
+                          The community is transitive.
+                          <ul>
+                            <li>A router sends the community over both internal and external BGP sessions.</li>
+                          </ul>
+                        </dd>
                         <dt>Value 1:</dt>
-                        <dd>The community is non-transitive across ASes</dd>
+                        <dd>
+                          The community is non-transitive.
+                          <ul>
+                            <li>A router sends the community over internal BGP sessions.</li>
+                            <li>
+                              If the router is attaching the community, it also sends the community over external BGP sessions.
+                            </li>
+                            <li>
+                              If the router is not attaching the community, it MUST NOT send the community over external BGP sessions.
+                              The router SHALL remove the community before announcing the corresponding route over external BGP sessions.
+                            </li>
+                          </ul>
+                        </dd>
                       </dl>
                     </dd>
                     <dt>Remaining 6 bits:</dt>

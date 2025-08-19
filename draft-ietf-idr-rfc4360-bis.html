@@ -1488,11 +1488,30 @@ li > p:last-of-type:only-child {
                     <dd style="margin-left: 1.5em" id="section-2-2.2.2.2.4.2.2.4">
                       <span class="break"></span><dl class="dlParallel" id="section-2-2.2.2.2.4.2.2.4.1">
                         <dt id="section-2-2.2.2.2.4.2.2.4.1.1">Value 0:</dt>
-                        <dd style="margin-left: 1.5em" id="section-2-2.2.2.2.4.2.2.4.1.2">The community is transitive across ASes<a href="#section-2-2.2.2.2.4.2.2.4.1.2" class="pilcrow">¶</a>
+                        <dd style="margin-left: 1.5em" id="section-2-2.2.2.2.4.2.2.4.1.2">
+                          <p id="section-2-2.2.2.2.4.2.2.4.1.2.1">
+                          The community is transitive.<a href="#section-2-2.2.2.2.4.2.2.4.1.2.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2-2.2.2.2.4.2.2.4.1.2.2.1">A router sends the community over both internal and external BGP sessions.<a href="#section-2-2.2.2.2.4.2.2.4.1.2.2.1" class="pilcrow">¶</a>
+</li>
+                          </ul>
 </dd>
                         <dd class="break"></dd>
 <dt id="section-2-2.2.2.2.4.2.2.4.1.3">Value 1:</dt>
-                        <dd style="margin-left: 1.5em" id="section-2-2.2.2.2.4.2.2.4.1.4">The community is non-transitive across ASes<a href="#section-2-2.2.2.2.4.2.2.4.1.4" class="pilcrow">¶</a>
+                        <dd style="margin-left: 1.5em" id="section-2-2.2.2.2.4.2.2.4.1.4">
+                          <p id="section-2-2.2.2.2.4.2.2.4.1.4.1">
+                          The community is non-transitive.<a href="#section-2-2.2.2.2.4.2.2.4.1.4.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2-2.2.2.2.4.2.2.4.1.4.2.1">A router sends the community over internal BGP sessions.<a href="#section-2-2.2.2.2.4.2.2.4.1.4.2.1" class="pilcrow">¶</a>
+</li>
+                            <li class="normal" id="section-2-2.2.2.2.4.2.2.4.1.4.2.2">
+                              If the router is attaching the community, it also sends the community over external BGP sessions.<a href="#section-2-2.2.2.2.4.2.2.4.1.4.2.2" class="pilcrow">¶</a>
+</li>
+                            <li class="normal" id="section-2-2.2.2.2.4.2.2.4.1.4.2.3">
+                              If the router is not attaching the community, it MUST NOT send the community over external BGP sessions.
+                              The router SHALL remove the community before announcing the corresponding route over external BGP sessions.<a href="#section-2-2.2.2.2.4.2.2.4.1.4.2.3" class="pilcrow">¶</a>
+</li>
+                          </ul>
 </dd>
                       <dd class="break"></dd>
 </dl>
