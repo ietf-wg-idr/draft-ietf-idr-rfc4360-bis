@@ -158,9 +158,10 @@
                               The BGP speaker SHALL remove the community before announcing the corresponding route over external BGP sessions.
                             </li>
                             <li>
-                              When a BGP speaker receives the community over external BGP sessions, it SHOULD NOT remove the community.
-                              The BGP speaker SHOULD also allow local policies to capture the community.
+                              When a BGP speaker receives the community over external BGP sessions, it SHOULD NOT remove the community by
+                              default.
                               This default behavior MAY be configurable.
+                              The BGP speaker SHOULD also allow local policies to match against or remove the community.
                             </li>
                           </ul>
                         </dd>
