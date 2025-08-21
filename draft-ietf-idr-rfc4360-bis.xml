@@ -157,6 +157,11 @@
                               If the BGP speaker is not attaching the community, it MUST NOT send the community over external BGP sessions.
                               The BGP speaker SHALL remove the community before announcing the corresponding route over external BGP sessions.
                             </li>
+                            <li>
+                              When a BGP speaker receives the community over external BGP sessions, it SHOULD NOT remove the community.
+                              The BGP speaker SHOULD also allow local policies to capture the community.
+                              This default behavior MAY be configurable.
+                            </li>
                           </ul>
                         </dd>
                       </dl>
@@ -522,9 +527,8 @@ Assignments consist of a name and the value.
         We thank Yakov Rekhter and Alfred Hoenes for pointing out several errors in <xref target="RFC4360"/>.
       </t>
       <t>
-	Inconsistencies regarding the procedures for originating non-transitive
-	extended communities were previously raised in 
-	<xref target="I-D.decraene-idr-rfc4360-clarification"/>.
+        Inconsistencies regarding the procedures for originating non-transitive extended communities were previously raised in
+        <xref target="I-D.decraene-idr-rfc4360-clarification"/>.
       </t>
       <t>
         We also thank Jeffrey Haas for his suggestions and feedback on this document.
