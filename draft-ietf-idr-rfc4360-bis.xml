@@ -7,6 +7,17 @@
       BGP Extended Communities Attribute
     </title>
     <seriesInfo name="Internet-Draft" value="draft-ietf-idr-rfc4360-bis-00"/>
+    <author initials="S." surname="Sangli" fullname="Srihari Sangli">
+      <organization>Juniper Networks</organization>
+      <address>
+        <postal>
+          <street>Exora Business Park</street>
+          <street>Bangalore, KA  560103</street>
+          <street>India</street>
+        </postal>
+        <email>ssangli@juniper.net</email>
+      </address>
+    </author>
     <author fullname="Nat Kao" initials="N" role="editor" surname="Kao">
       <organization>Individual Contributor</organization>
       <address>
@@ -517,19 +528,22 @@ Assignments consist of a name and the value.
         provide such a relationship is beyond the scope of this document.
       </t>
     </section>
+    <section title="Contributors" anchor="Contributors">
+      <t>
+        Dan Tappan and Yakov Rekhter were the authors of <xref target="RFC4360"/> and, therefore, are contributing authors of this document.
+      </t>
+    </section>
     <section title="Acknowledgements" anchor="Acknowledgements">
       <t>
-        The authors would like to thank the authors of <xref target="RFC4360"/>, 
-        Srihari R. Sangli, Dan Tappan, and Yakov Rekhter for their work on the original document.
-        We also wish to thank John Hawkinson, Jeffrey Haas, Bruno Rijsman, Bill Fenner, and Alex Zinin for their suggestions and feedback 
-        on that document.
+        We wish to thank John Hawkinson, Jeffrey Haas, Bruno Rijsman, Bill Fenner, and Alex Zinin for their suggestions and feedback on 
+        the original <xref target="RFC4360"/>.
       </t>
       <t>
         We thank Yakov Rekhter and Alfred Hoenes for pointing out several errors in <xref target="RFC4360"/>.
       </t>
       <t>
-        Inconsistencies regarding the procedures for originating non-transitive extended communities were previously raised in
-        <xref target="I-D.decraene-idr-rfc4360-clarification"/>.
+        We also wish to thank Bruno Decraene, Laurent Vanbever, and Pierre Francois for pointing out inconsistencies regarding the
+        procedures for originating non-transitive extended communities in <xref target="I-D.decraene-idr-rfc4360-clarification"/>.
       </t>
       <t>
         We also thank Jeffrey Haas for his suggestions and feedback on this document.
