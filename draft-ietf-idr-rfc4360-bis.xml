@@ -389,6 +389,13 @@
       </t>
     </section>
 
+    <section title="Error Handling">
+      <t>
+        <xref target="RFC7606" sectionFormat="comma" section="7.14"/>,
+        defines the error handling procedure for the Extended Community attribute.
+      </t>
+    </section>
+
     <section title="IANA Considerations">
       <t>
         All the BGP Extended Communities contain a Type field. The IANA has created a registry entitled, "BGP Extended Communities Type".
@@ -539,6 +546,7 @@ Assignments consist of a name and the value.
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4360.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.5668.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7120.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7606.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8126.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
     </references>
