@@ -150,32 +150,9 @@
                     <dd>
                       <dl>
                         <dt>Value 0:</dt>
-                        <dd>
-                          The community is transitive.
-                          <ul>
-                            <li>A BGP speaker sends the community over both internal and external BGP sessions.</li>
-                          </ul>
-                        </dd>
+                        <dd>The community is transitive across ASes</dd>
                         <dt>Value 1:</dt>
-                        <dd>
-                          The community is non-transitive.
-                          <ul>
-                            <li>A BGP speaker sends the community over internal BGP sessions.</li>
-                            <li>
-                              If the BGP speaker is attaching the community, it also sends the community over external BGP sessions.
-                            </li>
-                            <li>
-                              If the BGP speaker is not attaching the community, it MUST NOT send the community over external BGP sessions.
-                              The BGP speaker SHALL remove the community before announcing the corresponding route over external BGP sessions.
-                            </li>
-                            <li>
-                              When a BGP speaker receives the community over external BGP sessions, it SHOULD NOT remove the community by
-                              default.
-                              This default behavior MAY be configurable.
-                              The BGP speaker SHOULD also allow local policies to match against or remove the community.
-                            </li>
-                          </ul>
-                        </dd>
+                        <dd>The community is non-transitive across ASes</dd>
                       </dl>
                     </dd>
                     <dt>Remaining 6 bits:</dt>
@@ -399,9 +376,10 @@
         BGP speaker that performs the aggregation.
       </t>
       <t>
-        If a route has a non-transitive extended community, then before advertising the route across the Autonomous System boundary the
-        community SHOULD be removed from the route. However, the community SHOULD NOT be removed when advertising the route across the BGP
-        Confederation boundary.
+        If a route has non-transitive extended communities, those communities SHOULD NOT be propagated across an Autonomous System boundary
+        and SHOULD be removed from the route. However, non-transitive extended communities SHOULD NOT be removed when advertising the route
+        across BGP Confederation boundaries. As part of configuration or BGP features, BGP speakers MAY attach non-transitive extended
+        communities to routes advertised across Autonomous System boundaries.
       </t>
       <t>
         A route may carry both the BGP Communities attribute, as defined in
