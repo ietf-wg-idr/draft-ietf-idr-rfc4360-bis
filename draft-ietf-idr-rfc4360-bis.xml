@@ -376,16 +376,21 @@
         BGP speaker that performs the aggregation.
       </t>
       <t>
+        A route may carry both the BGP Communities attribute, as defined in
+        <xref target="RFC1997"/>), and the Extended BGP Communities attribute.
+        In this case, the BGP Communities attribute is handled as specified in 
+        <xref target="RFC1997"/>, and the Extended BGP Communities attribute is handled as specified in this document.
+      </t>
+      <t>
         If a route has non-transitive extended communities, those communities SHOULD NOT be propagated across an Autonomous System boundary
         and SHOULD be removed from the route. However, non-transitive extended communities SHOULD NOT be removed when advertising the route
         across BGP Confederation boundaries. As part of configuration or BGP features, BGP speakers MAY attach non-transitive extended
         communities to routes advertised across Autonomous System boundaries.
       </t>
       <t>
-        A route may carry both the BGP Communities attribute, as defined in
-        <xref target="RFC1997"/>), and the Extended BGP Communities attribute.
-        In this case, the BGP Communities attribute is handled as specified in 
-        <xref target="RFC1997"/>, and the Extended BGP Communities attribute is handled as specified in this document.
+        By default, when a BGP speaker receives routes with non-transitive extended communities across Autonomous System or BGP
+        confederation boundaries, it MUST NOT remove these extended communities. This default behavior MAY be configurable. The BGP speaker
+        SHOULD also allow local policies to match against or remove these extended communities.
       </t>
     </section>
 
