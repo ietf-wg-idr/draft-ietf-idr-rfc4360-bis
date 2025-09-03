@@ -390,7 +390,7 @@
       </t>
       <t>
         By default, when a BGP speaker receives routes with non-transitive extended communities across Autonomous System or Confederation 
-        Member-AS boundaries, it MUST NOT remove these extended communities. This default behavior MAY be configurable. The BGP speaker
+        Member-AS boundaries, it SHOULD NOT remove these extended communities. The behavior MAY be configurable. The BGP speaker
         SHOULD also allow local policies to match against or remove these extended communities.
       </t>
     </section>
@@ -537,7 +537,8 @@ Assignments consist of a name and the value.
         procedures for originating non-transitive extended communities in <xref target="I-D.decraene-idr-rfc4360-clarification"/>.
       </t>
       <t>
-        We also thank Jeffrey Haas, Robert Raszuk, and Bruno Decraene for their suggestions and feedback on this document.
+        We also thank Jeffrey Haas, Robert Raszuk, Bruno Decraene, Yingzhen Qu, and Jie Dong for their suggestions and feedback on this
+        document.
       </t>
     </section>
   </middle>
