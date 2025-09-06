@@ -738,7 +738,7 @@
           </author>
         </front>
       </reference>
-      <reference anchor="IANA-BGP-EC-TRANS-OPAQUE" target="https://www.iana.org/assignments/bgp-extended-communities/bgp-extended-communities.xhtml#trans-opaque" derivedAnchor="IANA-BGP-EC-TRANS-OPQUE">
+      <reference anchor="IANA-BGP-EC-TRANS-OPAQUE" target="https://www.iana.org/assignments/bgp-extended-communities/bgp-extended-communities.xhtml#trans-opaque" derivedAnchor="IANA-BGP-EC-TRANS-OPAQUE">
         <front>
           <title>Transitive Opaque Extended Community Sub-Types</title>
           <author>
@@ -748,7 +748,7 @@
           </author>
         </front>
       </reference>
-      <reference anchor="IANA-BGP-EC-NONTRANS-OPAQUE" target="https://www.iana.org/assignments/bgp-extended-communities/bgp-extended-communities.xhtml#non-trans-opaque" derivedAnchor="IANA-BGP-EC-NONTRANS-OPQUE">
+      <reference anchor="IANA-BGP-EC-NONTRANS-OPAQUE" target="https://www.iana.org/assignments/bgp-extended-communities/bgp-extended-communities.xhtml#non-trans-opaque" derivedAnchor="IANA-BGP-EC-NONTRANS-OPAQUE">
         <front>
           <title>Non-Transitive Opaque Extended Community Sub-Types</title>
           <author>
