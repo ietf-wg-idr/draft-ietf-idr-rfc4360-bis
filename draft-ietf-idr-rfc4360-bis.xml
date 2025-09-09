@@ -432,6 +432,10 @@
         Further definitions of sub type registries, along with their allocation policies, can be found in <xref target="RFC7153"/>.
       </t>
       <t>
+        Should the conditions be met, early creations of sub type registries can be done and tracked using the Early Registry Creation
+        process defined in <xref target="I-D.baber-ianabis-early-registries"/>.
+      </t>
+      <t>
         The following table summarizes the ranges for the assignment of the "BGP Transitive Extended Community Types"
         registry <xref target="IANA-BGP-EC-TRANS"/>:
       </t>
@@ -677,6 +681,7 @@
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8126.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.9184.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml3/reference.I-D.baber-ianabis-early-registries.xml"/>
       <reference anchor="IANA-BGP-EC-TRANS" target="https://www.iana.org/assignments/bgp-extended-communities/bgp-extended-communities.xhtml#transitive" derivedAnchor="IANA-BGP-EC-TRANS">
         <front>
           <title>BGP Transitive Extended Community Types</title>
