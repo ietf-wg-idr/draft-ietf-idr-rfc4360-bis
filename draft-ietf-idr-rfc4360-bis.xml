@@ -429,10 +429,10 @@
         or the "First Come First Served" policy defined in <xref target="RFC8126"/>.
       </t>
       <t>
-        Further definitions of sub type registries, along with their allocation policies, can be found in <xref target="RFC7153"/>.
+        Further definitions of sub-type registries, along with their allocation policies, can be found in <xref target="RFC7153"/>.
       </t>
       <t>
-        Should the conditions be met, early creations of sub type registries can be done and tracked using the Early Registry Creation
+        Should the conditions be met, early creations of sub-type registries can be done and tracked using the Early Registry Creation
         process defined in <xref target="I-D.baber-ianabis-early-registries"/>.
       </t>
       <t>
