@@ -352,7 +352,7 @@
       </t>
     </section>
 
-    <section title="Operations">
+    <section title="Operations" anchor="operations">
       <t>
         A BGP speaker may use the Extended Communities attribute to control which routing information it accepts or distributes to its
         peers.
@@ -395,14 +395,14 @@
       </t>
     </section>
 
-    <section title="Error Handling">
+    <section title="Error Handling" anchor="error-handling">
       <t>
         <xref target="RFC7606" sectionFormat="comma" section="7.14"/>,
         defines the error handling procedure for the Extended Community attribute.
       </t>
     </section>
 
-    <section title="IANA Considerations">
+    <section title="IANA Considerations" anchor="iana-considerations">
       <t>
         All the BGP Extended Communities contain a Type field.
       </t>
@@ -647,7 +647,7 @@
         Dan Tappan and Yakov Rekhter were the authors of <xref target="RFC4360"/> and, therefore, are contributing authors of this document.
       </t>
     </section>
-    <section title="Acknowledgements" anchor="Acknowledgements">
+    <section title="Acknowledgements" anchor="acknowledgements">
       <t>
         We wish to thank John Hawkinson, Jeffrey Haas, Bruno Rijsman, Bill Fenner, and Alex Zinin for their suggestions and feedback on 
         the original <xref target="RFC4360"/>.
@@ -660,8 +660,8 @@
         procedures for originating non-transitive extended communities in <xref target="I-D.decraene-idr-rfc4360-clarification"/>.
       </t>
       <t>
-        We also thank Jeffrey Haas, Robert Raszuk, Bruno Decraene, Yingzhen Qu, and Jie Dong for their suggestions and feedback on this
-        document.
+        We also thank Jeffrey Haas, Robert Raszuk, Bruno Decraene, Linda Dunbar, Yingzhen Qu, Jie Dong and Lizhen Qiang for their
+        suggestions and feedback on this document.
       </t>
     </section>
   </middle>
@@ -768,6 +768,29 @@
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4364.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.draft-decraene-idr-rfc4360-clarification-00.xml"/>
     </references>
+
+    <section anchor="Appendix" title="Comparison with RFC4360">
+      <t>
+        The encodings and definitions of the extended communities are unchanged in this document.
+      </t>
+      <t>
+        Besides addressing known errata in <xref target="RFC4360"/>, this document updates the following:
+      </t>
+      <ul>
+        <li>
+          <xref target="operations"/> clarifies the operations of non-transitive extended communities across
+          Autonomous System or Confederation Member-AS boundaries.
+        </li>
+        <li>
+          <xref target="error-handling"/> is added to describe the error handling procedures.
+        </li>
+        <li>
+          <xref target="iana-considerations"/> is updated to reflect the current IANA registry status.
+          The update splits the "BGP Extended Communities Type" registry into transitive and non-transitive registries.
+          This section also contains similar updates for the Sub-Types defined.
+        </li>
+      </ul>
+    </section>
     
  </back>
 </rfc>
