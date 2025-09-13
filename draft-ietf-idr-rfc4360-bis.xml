@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="rfc7991bis.rnc"?>
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" docName="draft-ietf-idr-rfc4360-bis-00" obsoletes="4360" updates="" submissionType="IETF" consensus="true" ipr="pre5378Trust200902" xml:lang="en">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" docName="draft-ietf-idr-rfc4360-bis-01" obsoletes="4360" updates="" submissionType="IETF" consensus="true" ipr="pre5378Trust200902" xml:lang="en">
   <front>
     <title abbrev="BGP Extended Communities Attribute">
       BGP Extended Communities Attribute
     </title>
-    <seriesInfo name="Internet-Draft" value="draft-ietf-idr-rfc4360-bis-00"/>
+    <seriesInfo name="Internet-Draft" value="draft-ietf-idr-rfc4360-bis-01"/>
     <author initials="S." surname="Sangli" fullname="Srihari Sangli">
       <organization>Juniper Networks</organization>
       <address>
