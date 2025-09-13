@@ -23,7 +23,7 @@
         <email>pyxislx@gmail.com</email>
       </address>
     </author>
-    <date year="2025"/> <!-- keeps xml2rfc happy -->
+    <date year="2025"/>
     <area>Routing Area</area>
     <workgroup>IDR Working Group</workgroup>
     <keyword>RFC</keyword>
