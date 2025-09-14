@@ -109,7 +109,7 @@
                 Two classes of Type Field are introduced: Regular Type and Extended Type.
               </t>
               <t>
-                The size of Type Field for Regular Types is 1 octet, and the size of the Type Field for Extended Types is 2 octets.
+                The size of the Type Field for Regular Types is 1 octet, and the size of the Type Field for Extended Types is 2 octets.
               </t>
               <t>
                 The value of the high-order octet of the Type Field determines if an extended community is a Regular Type or an Extended Type.
@@ -172,7 +172,7 @@
       </t>
       <t>
         The two members in the tuple &lt;Type, Value&gt; should be enumerated to specify any community value. The remaining octets of the
-        community interpreted based on the value of the Type field.
+        community are interpreted based on the value of the Type field.
       </t>
     </section>
 
@@ -180,7 +180,7 @@
       <t>
         This section introduces a few extended types and defines the format of the Value Field for those types. The types introduced here
         provide "templates", where each template is identified by the high- order octet of the extended community Type field, and the
-        lower-order octet (sub-type) is used to indicate a particular type of extended community.
+        low-order octet (sub-type) is used to indicate a particular type of extended community.
       </t>
 
       <section title="Two-Octet AS-Specific Extended Community" anchor="two-octet-as-ec">
@@ -259,7 +259,7 @@
               <dt>Local Administrator sub-field: 2 octets</dt>
               <dd>
                 The organization that has been assigned the IPv4 address in the Global Administrator sub-field can encode any information in
-                this sub-field. The format and meaning of this value encoded in this sub-field should be defined by the sub-type of the
+                this sub-field. The format and meaning of the value encoded in this sub-field should be defined by the sub-type of the
                 community.
               </dd>
             </dl>
@@ -368,7 +368,7 @@
         A BGP speaker receiving a route with the Extended Communities attribute MAY modify this attribute according to the local policy.
       </t>
       <t>
-        By default if a range of routes is to be aggregated and the resultant aggregates path attributes do not carry the ATOMIC_AGGREGATE
+        By default if a range of routes is to be aggregated and the resultant aggregate's path attributes do not carry the ATOMIC_AGGREGATE
         attribute, then the resulting aggregate should have an Extended Communities path attribute that contains the set union of all the
         Extended Communities from all of the aggregated routes. The default behavior could be overridden via local configuration, in which
         case handling the Extended Communities attribute in the presence of route aggregation becomes a matter of the local policy of the
@@ -383,7 +383,7 @@
       <t>
         If a route has non-transitive extended communities, those communities SHOULD NOT be propagated across an Autonomous System boundary
         and SHOULD be removed from the route. However, non-transitive extended communities SHOULD NOT be removed when advertising the route
-        within the same BGP AS Confederation(as defined in <xref target="RFC5065"/>).
+        within the same BGP AS Confederation (as defined in <xref target="RFC5065"/>).
         As part of configuration or BGP protocol extensions, BGP speakers MAY attach non-transitive extended communities to routes
         advertised across Autonomous System boundaries.
       </t>
