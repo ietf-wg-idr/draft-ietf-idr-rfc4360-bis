@@ -461,7 +461,7 @@
         </tbody>
       </table>
       <t>
-        This document makes the following assignments in the "BGP Transitive Extended Community Types"
+        The IANA is requested to update the following references in the "BGP Transitive Extended Community Types"
         registry <xref target="IANA-BGP-EC-TRANS"/>:
       </t>
       <table>
@@ -469,6 +469,7 @@
           <tr>
             <th>TYPE VALUE</th>
             <th>NAME</th>
+            <th>REFERENCE</th>
           </tr>
         </thead>
         <tbody>
@@ -478,6 +479,7 @@
               Transitive Two-Octet AS-Specific Extended Community (Sub-Types are defined in the "Transitive Two-Octet AS-Specific
               Extended Community Sub-Types" registry <xref target="IANA-BGP-EC-TRANS-TWO-OCTET-AS"/>)
             </td>
+            <td align="left"><xref target="RFC7153"/>[this document]</td>
           </tr>
           <tr>
             <td align="left">0x01</td>
@@ -485,6 +487,7 @@
               Transitive IPv4-Address-Specific Extended Community (Sub-Types are defined in the "Transitive IPv4-Address-Specific
               Extended Community Sub-Types" registry <xref target="IANA-BGP-EC-TRANS-IPV4"/>)
             </td>
+            <td align="left"><xref target="RFC7153"/>[this document]</td>
           </tr>
           <tr>
             <td align="left">0x03</td>
@@ -492,6 +495,7 @@
               Transitive Opaque Extended Community (Sub-Types are defined in the "Transitive Opaque Extended Community Sub-Types"
               registry <xref target="IANA-BGP-EC-TRANS-OPAQUE"/>)
             </td>
+            <td align="left"><xref target="RFC7153"/>[this document]</td>
           </tr>
         </tbody>
       </table>
@@ -522,7 +526,7 @@
         </tbody>
       </table>
       <t>
-        This document makes the following assignments in the "BGP Non-Transitive Extended Community Types"
+        The IANA is requested to update the following references in the "BGP Non-Transitive Extended Community Types"
         <xref target="IANA-BGP-EC-TRANS"/> registry:
       </t>
       <table>
@@ -530,6 +534,7 @@
           <tr>
             <th>TYPE VALUE</th>
             <th>NAME</th>
+            <th>REFERENCE</th>
           </tr>
         </thead>
         <tbody>
@@ -539,6 +544,7 @@
               Non-Transitive Two-Octet AS-Specific Extended Community (Sub-Types are defined in the "Non-Transitive Two-Octet AS-Specific
               Extended Community Sub-Types" registry <xref target="IANA-BGP-EC-NONTRANS-TWO-OCTET-AS"/>)
             </td>
+            <td align="left"><xref target="RFC7153"/>[this document]</td>
           </tr>
           <tr>
             <td align="left">0x41</td>
@@ -546,6 +552,7 @@
               Non-Transitive IPv4-Address-Specific Extended Community (Sub-Types are defined in the "Non-Transitive IPv4-Address-Specific
               Extended Community Sub-Types" registry <xref target="IANA-BGP-EC-NONTRANS-IPV4"/>)
             </td>
+            <td align="left"><xref target="RFC7153"/>[this document]</td>
           </tr>
           <tr>
             <td align="left">0x43</td>
@@ -553,6 +560,7 @@
               Non-Transitive Opaque Extended Community (Sub-Types are defined in the "Non-Transitive Opaque Extended Community Sub-Types"
               registry <xref target="IANA-BGP-EC-NONTRANS-OPAQUE"/>)
             </td>
+            <td align="left"><xref target="RFC7153"/>[this document]</td>
           </tr>
         </tbody>
       </table>
@@ -561,27 +569,34 @@
         create and maintain two registries entitled "Transitive Two-Octet AS-Specific Extended Community Sub-Types"
         <xref target="IANA-BGP-EC-TRANS-TWO-OCTET-AS"/> and "Non-Transitive Two-Octet AS-Specific Extended Community Sub-Types"
         <xref target="IANA-BGP-EC-NONTRANS-TWO-OCTET-AS"/>.
+      </t>
+      <t>
         All the communities in this class are of Extended Types.
-        Future assignments are to be made using the "First Come First Served" policy defined in <xref target="RFC8126"/>. 
+        <xref target="RFC7153"/> includes further assignments of these registries.
       </t>
       <t>
         This document defines a class of extended communities called IPv4-Address-Specific Extended Community for which the IANA is to
         create and maintain two registries entitled "Transitive IPv4-Address-Specific Extended Community Sub-Types"
-        <xref target="IANA-BGP-EC-TRANS-TWO-OCTET-AS"/> and "Non-Transitive IPv4-Address-Specific Extended Community Sub-Types"
-        <xref target="IANA-BGP-EC-NONTRANS-TWO-OCTET-AS"/>.
+        <xref target="IANA-BGP-EC-TRANS-IPV4"/> and "Non-Transitive IPv4-Address-Specific Extended Community Sub-Types"
+        <xref target="IANA-BGP-EC-NONTRANS-IPV4"/>.
+      </t>
+      <t>
         All the communities in this class are of extended Types.
-        Future assignments are to be made using the "First Come First Served" policy defined in <xref target="RFC8126"/>. 
+        <xref target="RFC7153"/> includes further assignments of these registries.
       </t>
       <t>
         This document defines a class of extended communities called Opaque Extended Community for which the IANA is to
         create and maintain two registries entitled "Transitive Opaque Extended Community Sub-Types"
         <xref target="IANA-BGP-EC-TRANS-OPAQUE"/> and "Non-Transitive Opaque Extended Community Sub-Types"
         <xref target="IANA-BGP-EC-NONTRANS-OPAQUE"/>.
-        All the communities in this class are of extended Types.
-        Future assignments are to be made using the "First Come First Served" policy defined in <xref target="RFC8126"/>. 
       </t>
       <t>
-        This document makes the following assignments in the "Transitive Two-Octet AS-Specific Extended Community Sub-Types" registry
+        All the communities in this class are of extended Types.
+        <xref target="RFC7153"/> includes further assignments of these registries.
+      </t>
+      <t>
+        The IANA is requested to update the following references in the
+        "Transitive Two-Octet AS-Specific Extended Community Sub-Types" registry
         <xref target="IANA-BGP-EC-TRANS-TWO-OCTET-AS"/>:
       </t>
       <table>
@@ -589,22 +604,26 @@
           <tr>
             <th>SUB-TYPE VALUE</th>
             <th>NAME</th>
+            <th>REFERENCE</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td align="left">0x02</td>
             <td align="left">Route Target</td>
+            <td align="left">[this document]</td>
           </tr>
           <tr>
             <td align="left">0x03</td>
             <td align="left">Route Origin</td>
+            <td align="left">[this document]</td>
           </tr>
         </tbody>
       </table>
 
       <t>
-        This document makes the following assignments in the "Transitive IPv4-Address-Specific Extended Community Sub-Types" registry
+        The IANA is requested to update the following references in the 
+        "Transitive IPv4-Address-Specific Extended Community Sub-Types" registry
         <xref target="IANA-BGP-EC-TRANS-IPV4"/>:
       </t>
       <table>
@@ -612,16 +631,19 @@
           <tr>
             <th>SUB-TYPE VALUE</th>
             <th>NAME</th>
+            <th>REFERENCE</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td align="left">0x02</td>
             <td align="left">Route Target</td>
+            <td align="left">[this document]</td>
           </tr>
           <tr>
             <td align="left">0x03</td>
             <td align="left">Route Origin</td>
+            <td align="left">[this document]</td>
           </tr>
         </tbody>
       </table>
