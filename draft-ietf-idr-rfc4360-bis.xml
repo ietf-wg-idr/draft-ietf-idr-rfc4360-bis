@@ -392,6 +392,14 @@
         Member-AS boundaries, it SHOULD NOT remove these extended communities. The behavior MAY be configurable. The BGP speaker
         SHOULD also allow local policies to match against or remove these extended communities.
       </t>
+      <t>
+        For 4-Octet AS Number <xref target="RFC6793"/> use-cases,
+        one may consider using 4-Octet AS-Specific BGP Extended Communities <xref target="RFC5668"/>
+        or BGP Large Communities <xref target="RFC8092"/>.
+      </t>
+      <t>
+        For IPv6 address-specific use-cases, one may consider using IPv6-Address-Specific BGP Extended Communities <xref target="RFC5701"/>.
+      </t>
     </section>
 
     <section title="Error Handling" anchor="error-handling">
@@ -765,6 +773,9 @@
     <references title="Informative References">
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4360.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4364.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.5701.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.6793.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8092.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.draft-decraene-idr-rfc4360-clarification-00.xml"/>
     </references>
 
