@@ -403,6 +403,13 @@
 
     <section title="IANA Considerations" anchor="iana-considerations">
       <t>
+        Since this document obsoletes <xref target="RFC4360"/>,
+        IANA is requested to replace all references to <xref target="RFC4360"/>
+        with [this document] in the "BGP Path Attributes" <xref target="IANA-BGP-PATH-ATTRIBUTES"/> registry,
+        the "BGP Extended Communities" <xref target="IANA-BGP-EC"/> registry group,
+        and the "IPFIX Entities" <xref target="IANA-IPFIX"/> registry group.
+      </t>
+      <t>
         All the BGP Extended Communities contain a Type field.
       </t>
       <t>
@@ -681,6 +688,26 @@
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.9184.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml3/reference.I-D.baber-ianabis-early-registries.xml"/>
+      <reference anchor="IANA-BGP-PATH-ATTRIBUTES" target="https://www.iana.org/assignments/bgp-parameters/bgp-parameters.xhtml#bgp-parameters-2" derivedAnchor="IANA-BGP-PATH-ATTRIBUTES">
+        <front>
+          <title>BGP Path Attributes</title>
+          <author>
+            <organization showOnFrontPage="true">
+              IANA
+            </organization>
+          </author>
+        </front>
+      </reference>
+      <reference anchor="IANA-BGP-EC" target="https://www.iana.org/assignments/bgp-extended-communities/bgp-extended-communities.xhtml" derivedAnchor="IANA-BGP-EC">
+        <front>
+          <title>BGP Extended Communities</title>
+          <author>
+            <organization showOnFrontPage="true">
+              IANA
+            </organization>
+          </author>
+        </front>
+      </reference>
       <reference anchor="IANA-BGP-EC-TRANS" target="https://www.iana.org/assignments/bgp-extended-communities/bgp-extended-communities.xhtml#transitive" derivedAnchor="IANA-BGP-EC-TRANS">
         <front>
           <title>BGP Transitive Extended Community Types</title>
@@ -754,6 +781,16 @@
       <reference anchor="IANA-BGP-EC-NONTRANS-OPAQUE" target="https://www.iana.org/assignments/bgp-extended-communities/bgp-extended-communities.xhtml#non-trans-opaque" derivedAnchor="IANA-BGP-EC-NONTRANS-OPAQUE">
         <front>
           <title>Non-Transitive Opaque Extended Community Sub-Types</title>
+          <author>
+            <organization showOnFrontPage="true">
+              IANA
+            </organization>
+          </author>
+        </front>
+      </reference>
+      <reference anchor="IANA-IPFIX" target="https://www.iana.org/assignments/ipfix/ipfix.xhtml" derivedAnchor="IANA-IPFIX">
+        <front>
+          <title>IPFIX Entities</title>
           <author>
             <organization showOnFrontPage="true">
               IANA
