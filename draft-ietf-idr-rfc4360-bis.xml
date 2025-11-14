@@ -458,8 +458,12 @@
             <td align="left">First Come First Served</td>
           </tr>
           <tr>
-            <td align="left">0x80-0x8F</td>
-            <td align="left">First Come First Served or Experimental Use (see <xref target="RFC3692"/> and <xref target="RFC9184"/>)</td>
+            <td align="left">0x80-0x82</td>
+            <td align="left">First Come First Served (see <xref target="RFC9184"/>)</td>
+          </tr>
+          <tr>
+            <td align="left">0x83-0x8F</td>
+            <td align="left">Experimental Use (see <xref target="RFC3692"/>)</td>
           </tr>
           <tr>
             <td align="left">0x90-0xBF</td>
