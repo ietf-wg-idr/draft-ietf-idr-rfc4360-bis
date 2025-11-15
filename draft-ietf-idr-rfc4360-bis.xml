@@ -72,7 +72,7 @@
       </section>
     </section>
 
-    <section title="BGP Extended Communities Attribute">
+    <section title="BGP Extended Communities Attribute" anchor="bgp-ec-attr">
       <t>
         The Extended Communities Attribute is a transitive optional BGP attribute, with the Type Code 16. The attribute consists of a set
         of "extended communities". All routes with the Extended Communities attribute belong to the communities listed in the attribute.
@@ -176,7 +176,7 @@
       </t>
     </section>
 
-    <section title="Defined BGP Extended Community Types">
+    <section title="Defined BGP Extended Community Types" anchor="bgp-ec-types">
       <t>
         This section introduces a few extended types and defines the format of the Value Field for those types. The types introduced here
         provide "templates", where each template is identified by the high- order octet of the extended community Type field, and the
@@ -211,9 +211,19 @@
           <dd>
             <dl newline="true">
               <dt>Global Administrator sub-field: 2 octets</dt>
-              <dd>
-                This sub-field contains an Autonomous System number assigned by IANA.
-              </dd>
+                <dd>
+                  <t>
+                    This sub-field contains an Autonomous System number assigned by IANA.
+                  </t>
+                  <t>
+                    For a non-mappable four-octet Autonomous System number <xref target="RFC6793"/>,
+                    the BGP speaker SHOULD either fill AS_TRANS <xref target="RFC6793"/> in this field,
+                    use the 4-Octet AS Specific Extended Community <xref target="RFC5668"/>, or
+                    use the BGP Large Communities <xref target="RFC8092"/> instead;
+                    this sub-field MAY contain an arbitrary value chosen by the operator,
+                    provided it is allowed by the specific extended community.
+                  </t>
+                </dd>
               <dt>Local Administrator sub-field: 4 octets</dt>
               <dd>
                 The organization identified by Autonomous System number in the Global Administrator sub-field can encode any information in
@@ -291,6 +301,11 @@
         <t>
           This is a generic community of extended type. The value of the sub-type that should define the Value Field is to be assigned by
           IANA.
+        </t>
+      </section>
+      <section title="Notes about the AS-Specific Extended Community for 4-Octet ASes" anchor="four-octet-as-ec">
+        <t>
+          A 4-Octet AS-Specific type of extended community is defined in <xref target="RFC5668"/> and otherwise not covered in this document.
         </t>
       </section>
     </section>
@@ -391,11 +406,6 @@
         By default, when a BGP speaker receives routes with non-transitive extended communities across Autonomous System or Confederation 
         Member-AS boundaries, it SHOULD NOT remove these extended communities. The behavior MAY be configurable. The BGP speaker
         SHOULD also allow local policies to match against or remove these extended communities.
-      </t>
-      <t>
-        For 4-Octet AS Number <xref target="RFC6793"/> use-cases,
-        one may consider using 4-Octet AS-Specific BGP Extended Communities <xref target="RFC5668"/>
-        or BGP Large Communities <xref target="RFC8092"/>.
       </t>
       <t>
         For IPv6 address-specific use-cases, one may consider using IPv6-Address-Specific BGP Extended Communities <xref target="RFC5701"/>.
@@ -787,6 +797,9 @@
         Besides addressing known errata in <xref target="RFC4360"/>, this document updates the following:
       </t>
       <ul>
+        <li>
+          <xref target="bgp-ec-types"/> now includes references to the case for the 4-Octet Autonomous System number.
+        </li>
         <li>
           <xref target="operations"/> clarifies the operations of non-transitive extended communities across
           Autonomous System or Confederation Member-AS boundaries.
