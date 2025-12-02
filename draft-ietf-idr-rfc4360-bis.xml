@@ -7,11 +7,10 @@
     </title>
     <seriesInfo name="Internet-Draft" value="draft-ietf-idr-rfc4360-bis-01"/>
     <author initials="S." surname="Sangli" fullname="Srihari Sangli">
-      <organization>Juniper Networks</organization>
+      <organization>HPE</organization>
       <address>
         <postal>
-          <street>Exora Business Park</street>
-          <street>Bangalore, KA  560103</street>
+          <street>Mahadevapura, Bengaluru, KA 560048</street>
           <street>India</street>
         </postal>
         <email>ssangli@juniper.net</email>
