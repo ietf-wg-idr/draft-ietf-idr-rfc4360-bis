@@ -430,8 +430,9 @@
           All the BGP Extended Communities contain a Type field.
         </t>
         <t>
-          The Type could be either regular or extended. For a Regular Type, the IANA allocates an 8-bit value; for an Extended
-          Type, the IANA allocates a 16-bit value.
+          The Type could be either regular or extended.
+          For a Regular Type, the IANA allocates an 8-bit type value;
+          for an Extended Type, the IANA allocates both an 8-bit type value and an 8-bit sub-type value.
         </t>
         <t>
           The high-order octet values allocated for the Regular Types and for the Extended Types are mutually exclusive.
