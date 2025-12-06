@@ -872,14 +872,22 @@
       </section>
     </section>
 
-    <section anchor="Security" title="Security Considerations">
+    <section title="Security Considerations" anchor="security-considerations">
       <t>
-        This extension to BGP has similar security implications as BGP Communities <xref target="RFC1997"/>.
+        This document does not change any underlying security issues associated with any other BGP Communities mechanism.
+        Since any intermediate AS in the path may have added, deleted, or altered the BGP Extended Communities attribute,
+        an AS relying on such an attribute carried in the BGP Update message must have trust in every other AS in the path.
+        Specifying the mechanism to provide such trust is beyond the scope of this document.
       </t>
       <t>
-        This extension to BGP does not change the underlying security issues. Specifically, an operator who is relying on the information
-        carried in BGP must have a transitive trust relationship back to the source of the information. Specifying the mechanism(s) to
-        provide such a relationship is beyond the scope of this document.
+        The BGP Extended Communities attribute itself does not protect the integrity of each extended community value.
+        The operator should be aware that any BGP speaker along the path can alter the attribute without notice.
+        Protecting the integrity of the handling of BGP Extended Communities attribute in a manner consistent with
+        the intent of expressed BGP routing policies falls within the broader scope of securing BGP
+        and is therefore not addressed here.
+      </t>
+      <t>
+        Operators should also note the recommendations in <xref target="RFC7454" sectionFormat="comma" section="11"/>.
       </t>
     </section>
     <section title="Contributors" anchor="Contributors">
@@ -917,6 +925,7 @@
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.5668.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7120.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7153.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7454.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7606.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8126.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
@@ -1064,6 +1073,9 @@
           <xref target="iana-considerations"/> is updated to reflect the current IANA registry status.
           The update splits the "BGP Extended Communities Type" registry into transitive and non-transitive registries.
           This section also contains similar updates for the Sub-Types defined.
+        </li>
+        <li>
+          <xref target="security-considerations"/> is updated to reflect the current security practice.
         </li>
       </ul>
     </section>
