@@ -154,7 +154,7 @@
                       </dl>
                     </dd>
                     <dt>Remaining 6 bits:</dt>
-                    <dd>Indicates the structure of the community</dd>
+                    <dd>Together with the I and T bit, indicate the Type of the extended community.</dd>
                   </dl>
                 </dd>
               </dl>
