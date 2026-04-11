@@ -390,7 +390,7 @@
       </t>
       <t>
         A route may carry both the BGP Communities attribute, as defined in
-        <xref target="RFC1997"/>), and the Extended BGP Communities attribute.
+        <xref target="RFC1997"/>, and the Extended BGP Communities attribute.
         In this case, the BGP Communities attribute is handled as specified in 
         <xref target="RFC1997"/>, and the Extended BGP Communities attribute is handled as specified in this document.
       </t>
