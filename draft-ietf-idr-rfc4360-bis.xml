@@ -76,14 +76,15 @@
         The Extended Communities Attribute is a transitive optional BGP attribute, with the Type Code 16. The attribute consists of a set
         of "extended communities". All routes with the Extended Communities attribute belong to the communities listed in the attribute.
       </t>
-      <dl newline="true">
-        <dt>
-          Each Extended Community is encoded as an 8-octet quantity, as follows:
-        </dt>
-        <dd>
-          <figure>
-            <artwork type="ascii-art">
-              <![CDATA[
+      <section title="BGP Extended Community" anchor="bgp-ec">
+        <dl newline="true">
+          <dt>
+            Each Extended Community is encoded as an 8-octet quantity, as follows:
+          </dt>
+          <dd>
+            <figure>
+              <artwork type="ascii-art">
+                <![CDATA[
  
 - Type Field  : 1 or 2 octets
 - Value Field : Remaining octets
@@ -98,81 +99,82 @@
 
 (*) Present for Extended Types only, used for the Value field
     otherwise.
-                ]]>
-            </artwork>
-          </figure>
-          <dl newline="true">
-            <dt>Type Field:</dt>
-            <dd>
-              <t>
-                Two classes of Type Field are introduced: Regular Type and Extended Type.
-              </t>
-              <t>
-                The size of the Type Field for Regular Types is 1 octet, and the size of the Type Field for Extended Types is 2 octets.
-              </t>
-              <t>
-                The value of the high-order octet of the Type Field determines if an extended community is a Regular Type or an Extended Type.
-                The class of a type (Regular or Extended) is not encoded in the structure of the type itself. The class of a type is specified
-                in the document that defines the type and the IANA registry.
-              </t>
-              <dl newline="true">
-                <dt>
-                  The high-order octet of the Type Field is as shown below:
-                </dt>
-                <dd>
-                  <figure>
-                    <artwork type="ascii-art">
-                      <![CDATA[
- 
+                  ]]>
+              </artwork>
+            </figure>
+            <dl newline="true">
+              <dt>Type Field:</dt>
+              <dd>
+                <t>
+                  Two classes of Type Field are introduced: Regular Type and Extended Type.
+                </t>
+                <t>
+                  The size of the Type Field for Regular Types is 1 octet, and the size of the Type Field for Extended Types is 2 octets.
+                </t>
+                <t>
+                  The value of the high-order octet of the Type Field determines if an extended community is a Regular Type or an Extended
+                  Type. The class of a type (Regular or Extended) is not encoded in the structure of the type itself. The
+                  class of a type is specified in the document that defines the type and the IANA registry.
+                </t>
+                <dl newline="true">
+                  <dt>
+                    The high-order octet of the Type Field is as shown below:
+                  </dt>
+                  <dd>
+                    <figure>
+                      <artwork type="ascii-art">
+                        <![CDATA[
+
  0 1 2 3 4 5 6 7
 +-+-+-+-+-+-+-+-+
 |I|T|           |
 +-+-+-+-+-+-+-+-+
-                        ]]>
-                    </artwork>
-                  </figure>
-                  <dl newline="true">
-                    <dt>I - IANA authority bit</dt>
-                    <dd>
-                      <dl>
-                        <dt>Value 0:</dt>
-                        <dd>IANA-assignable type using the "First Come First Serve" policy</dd>
-                        <dt>Value 1:</dt>
-                        <dd>
-                          Part of this Type Field space is for IANA assignable types using either the Standard Action or the Early IANA
-                          Allocation policy. The rest of this Type Field space is for Experimental use.
-                        </dd>
-                      </dl>
-                    </dd>
-                    <dt>T - Transitive bit</dt>
-                    <dd>
-                      <dl>
-                        <dt>Value 0:</dt>
-                        <dd>The community is transitive across ASes</dd>
-                        <dt>Value 1:</dt>
-                        <dd>The community is non-transitive across ASes</dd>
-                      </dl>
-                    </dd>
-                    <dt>Remaining 6 bits:</dt>
-                    <dd>Indicates the structure of the community</dd>
-                  </dl>
-                </dd>
-              </dl>
-            </dd>
-            <dt>Value Field:</dt>
-            <dd>
-              The encoding of the Value Field is dependent on the "type" of the community as specified by the Type Field.
-            </dd>
-          </dl>
-        </dd>
-      </dl>
-      <t>
-        Two extended communities are declared equal only when all 8 octets of the community are equal.
-      </t>
-      <t>
-        The two members in the tuple &lt;Type, Value&gt; should be enumerated to specify any community value. The remaining octets of the
-        community are interpreted based on the value of the Type field.
-      </t>
+                          ]]>
+                      </artwork>
+                    </figure>
+                    <dl newline="true">
+                      <dt>I - IANA authority bit</dt>
+                      <dd>
+                        <dl>
+                          <dt>Value 0:</dt>
+                          <dd>IANA-assignable type using the "First Come First Serve" policy</dd>
+                          <dt>Value 1:</dt>
+                          <dd>
+                            Part of this Type Field space is for IANA assignable types using either the Standard Action or the Early IANA
+                            Allocation policy. The rest of this Type Field space is for Experimental use.
+                          </dd>
+                        </dl>
+                      </dd>
+                      <dt>T - Transitive bit</dt>
+                      <dd>
+                        <dl>
+                          <dt>Value 0:</dt>
+                          <dd>The community is transitive across ASes</dd>
+                          <dt>Value 1:</dt>
+                          <dd>The community is non-transitive across ASes</dd>
+                        </dl>
+                      </dd>
+                      <dt>Remaining 6 bits:</dt>
+                      <dd>Indicates the structure of the community</dd>
+                    </dl>
+                  </dd>
+                </dl>
+              </dd>
+              <dt>Value Field:</dt>
+              <dd>
+                The encoding of the Value Field is dependent on the "type" of the community as specified by the Type Field.
+              </dd>
+            </dl>
+          </dd>
+        </dl>
+        <t>
+          Two extended communities are declared equal only when all 8 octets of the community are equal.
+        </t>
+        <t>
+          The two members in the tuple &lt;Type, Value&gt; should be enumerated to specify any community value. The remaining octets of the
+          community are interpreted based on the value of the Type field.
+        </t>
+      </section>
     </section>
 
     <section title="Defined BGP Extended Community Types" anchor="bgp-ec-types">
