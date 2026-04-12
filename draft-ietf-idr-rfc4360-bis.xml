@@ -76,10 +76,10 @@
         The Extended Communities Attribute is a transitive optional BGP attribute, with the Type Code 16. The attribute consists of a set
         of "extended communities". All routes with the Extended Communities attribute belong to the communities listed in the attribute.
       </t>
-      <section title="BGP Extended Community" anchor="bgp-ec">
+      <section title="BGP Extended Community Attribute Encoding" anchor="bgp-ec-encoding">
         <dl newline="true">
           <dt>
-            Each Extended Community is encoded as an 8-octet quantity, as follows:
+            Each Extended Community is encoded as an 8-octet quantity inside the BGP Extended Community Attribute, as follows:
           </dt>
           <dd>
             <figure>
