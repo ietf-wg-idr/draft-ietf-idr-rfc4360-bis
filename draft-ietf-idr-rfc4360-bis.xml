@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="rfc7991bis.rnc"?>
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" docName="draft-ietf-idr-rfc4360-bis-02" obsoletes="4360" updates="7153" submissionType="IETF" consensus="true" ipr="pre5378Trust200902" xml:lang="en">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" docName="draft-ietf-idr-rfc4360-bis-02" obsoletes="4360" updates="5701, 7153" submissionType="IETF" consensus="true" ipr="pre5378Trust200902" xml:lang="en">
   <front>
     <title abbrev="BGP Extended Communities Attribute">
       BGP Extended Communities Attribute
@@ -366,6 +366,9 @@
     </section>
 
     <section title="Operations" anchor="operations">
+      <t>
+        This section also applies to <xref target="RFC5701"/>.
+      </t>
       <t>
         A BGP speaker may use the Extended Communities attribute to control which routing information it accepts or distributes to its
         peers.
@@ -923,6 +926,7 @@
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4271.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.5065.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.5668.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.5701.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7120.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7153.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7454.xml"/>
@@ -1045,7 +1049,6 @@
     <references title="Informative References">
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4360.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4364.xml"/>
-      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.5701.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.6793.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8092.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.draft-decraene-idr-rfc4360-clarification-00.xml"/>
