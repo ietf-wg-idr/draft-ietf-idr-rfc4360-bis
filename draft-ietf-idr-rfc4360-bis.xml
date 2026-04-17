@@ -395,9 +395,9 @@
         <xref target="RFC1997"/>, and the Extended BGP Communities attribute is handled as specified in this document.
       </t>
       <t>
-        Unless re-originating or attaching, non-transitive extended communities SHOULD NOT be propagated across an Autonomous System
-        boundary and SHOULD be removed from the corresponding route. However, non-transitive extended communities SHOULD NOT be removed when
-        advertising the route within the same BGP AS Confederation (as defined in <xref target="RFC5065"/>).
+        Non-transitive extended communities MUST NOT be sent (originated or propagated) across an Autonomous System boundary unless
+        explicitly configured to do so. Non-transitive extended communities SHOULD NOT be removed when advertising the route within the
+        same BGP AS Confederation (*as defined in <xref target="RFC5065"/>).
         As part of configuration or explicitly stated by the BGP protocol extensions, BGP speakers MAY propagate non-transitive extended
         communities across Autonomous System boundaries.
       </t>
@@ -908,8 +908,8 @@
         procedures for originating non-transitive extended communities in <xref target="I-D.decraene-idr-rfc4360-clarification"/>.
       </t>
       <t>
-        We also thank Jeffrey Haas, Robert Raszuk, Bruno Decraene, Linda Dunbar, Yingzhen Qu, Jie Dong, Lizhen Qiang, and Erik Auerswald for
-        their suggestions and feedback on this document.
+        We also thank Jeffrey Haas, Robert Raszuk, Bruno Decraene, Linda Dunbar, Yingzhen Qu, Jie Dong, Lizhen Qiang, Erik Auerswald and
+        John Scudder for their suggestions and feedback on this document.
       </t>
     </section>
   </middle>
