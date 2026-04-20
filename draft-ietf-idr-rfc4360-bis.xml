@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="rfc7991bis.rnc"?>
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" docName="draft-ietf-idr-rfc4360-bis-04" obsoletes="4360" updates="5701, 7153" submissionType="IETF" consensus="true" ipr="pre5378Trust200902" xml:lang="en">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" docName="draft-ietf-idr-rfc4360-bis-05" obsoletes="4360" updates="5701, 7153" submissionType="IETF" consensus="true" ipr="pre5378Trust200902" xml:lang="en">
   <front>
     <title abbrev="BGP Extended Communities Attribute">
       BGP Extended Communities Attribute
     </title>
-    <seriesInfo name="Internet-Draft" value="draft-ietf-idr-rfc4360-bis-04"/>
+    <seriesInfo name="Internet-Draft" value="draft-ietf-idr-rfc4360-bis-05"/>
     <author initials="S." surname="Sangli" fullname="Srihari Sangli">
       <organization>HPE</organization>
       <address>
@@ -913,8 +913,8 @@
         procedures for originating non-transitive extended communities in <xref target="I-D.decraene-idr-rfc4360-clarification"/>.
       </t>
       <t>
-        We also thank Jeffrey Haas, Robert Raszuk, Bruno Decraene, Linda Dunbar, Yingzhen Qu, Jie Dong, Lizhen Qiang, Erik Auerswald and
-        John Scudder for their suggestions and feedback on this document.
+        We also thank Jeffrey Haas, Robert Raszuk, Bruno Decraene, Linda Dunbar, Yingzhen Qu, Jie Dong, Lizhen Qiang, Erik Auerswald, Aijun
+        Wang and John Scudder for their suggestions and feedback on this document.
       </t>
     </section>
   </middle>
