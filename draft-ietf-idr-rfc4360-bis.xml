@@ -965,7 +965,7 @@
           </author>
         </front>
       </reference>
-      <reference anchor="IANA-BGP-EC-NONTRANS" target="https://www.iana.org/assignments/bgp-extended-communities/bgp-extended-communities.xhtml#transitive" derivedAnchor="IANA-BGP-EC-NONTRANS">
+      <reference anchor="IANA-BGP-EC-NONTRANS" target="https://www.iana.org/assignments/bgp-extended-communities/bgp-extended-communities.xhtml#non-transitive" derivedAnchor="IANA-BGP-EC-NONTRANS">
         <front>
           <title>BGP Non-Transitive Extended Community Types</title>
           <author>
