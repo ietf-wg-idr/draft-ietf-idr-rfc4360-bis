@@ -52,7 +52,7 @@
       </t>
       <ul>
         <li>An extended range, ensuring that communities can be assigned for a plethora of uses, without fear of overlap.</li>
-        <li>The addition of a Type field provides structure for the community space.</li>
+        <li>The addition of a Type and Sub-Type field provides structure for the community space.</li>
       </ul>
       <t>
         The addition of structure allows the usage of policy based on the application for which the community value will be used. For
@@ -86,80 +86,66 @@
               <artwork type="ascii-art">
                 <![CDATA[
  
-- Type Field  : 1 or 2 octets
-- Value Field : Remaining octets
+- Type Field     : 1 octet
+- Sub-Type Field : 1 octet
+- Value Field    : 6 octets
 
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|  Type high    |  Type low(*)  |                               |
+|     Type      |    Sub-Type   |                               |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+          Value                |
 |                                                               |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-(*) Present for Extended Types only, used for the Value field
-    otherwise.
                   ]]>
               </artwork>
             </figure>
             <dl newline="true">
               <dt>Type Field:</dt>
               <dd>
-                <t>
-                  Two classes of Type Field are introduced: Regular Type and Extended Type.
-                </t>
-                <t>
-                  The size of the Type Field for Regular Types is 1 octet, and the size of the Type Field for Extended Types is 2 octets.
-                </t>
-                <t>
-                  The value of the high-order octet of the Type Field determines if an extended community is a Regular Type or an Extended
-                  Type. The class of a type (Regular or Extended) is not encoded in the structure of the type itself. The
-                  class of a type is specified in the document that defines the type and the IANA registry.
-                </t>
-                <dl newline="true">
-                  <dt>
-                    The high-order octet of the Type Field is as shown below:
-                  </dt>
-                  <dd>
-                    <figure>
-                      <artwork type="ascii-art">
-                        <![CDATA[
+		<figure>
+		  <artwork type="ascii-art">
+		    <![CDATA[
 
- 0 1 2 3 4 5 6 7
-+-+-+-+-+-+-+-+-+
-|I|T|           |
-+-+-+-+-+-+-+-+-+
-                          ]]>
-                      </artwork>
-                    </figure>
-                    <dl newline="true">
-                      <dt>I - IANA authority bit</dt>
-                      <dd>
-                        <dl>
-                          <dt>Value 0:</dt>
-                          <dd>IANA-assignable type using the "First Come First Serve" policy</dd>
-                          <dt>Value 1:</dt>
-                          <dd>
-                            Part of this Type Field space is for IANA assignable types using either the Standard Action or the Early IANA
-                            Allocation policy. The rest of this Type Field space is for Experimental use.
-                          </dd>
-                        </dl>
-                      </dd>
-                      <dt>T - Transitive bit</dt>
-                      <dd>
-                        <dl>
-                          <dt>Value 0:</dt>
-                          <dd>The community is transitive across ASes</dd>
-                          <dt>Value 1:</dt>
-                          <dd>The community is non-transitive across ASes</dd>
-                        </dl>
-                      </dd>
-                      <dt>Remaining 6 bits:</dt>
-                      <dd>Together with the I and T bit, indicate the Type of the extended community.</dd>
-                    </dl>
-                  </dd>
-                </dl>
-              </dd>
+0 1 2 3 4 5 6 7
++-+-+-+-+-+-+-+
+|I|T|         |
++-+-+-+-+-+-+-+
+		      ]]>
+		  </artwork>
+		</figure>
+		<dl newline="true">
+		  <dt>I - IANA authority bit</dt>
+		  <dd>
+		    <dl>
+		      <dt>Value 0:</dt>
+		      <dd>IANA-assignable type using the "First Come First Serve" policy</dd>
+		      <dt>Value 1:</dt>
+		      <dd>
+			Part of this Type Field space is for IANA assignable types using either the Standard Action or the Early IANA
+			Allocation policy. The rest of this Type Field space is for Experimental use.
+		      </dd>
+		    </dl>
+		  </dd>
+		  <dt>T - Transitive bit</dt>
+		  <dd>
+		    <dl>
+		      <dt>Value 0:</dt>
+		      <dd>The community is transitive across ASes</dd>
+		      <dt>Value 1:</dt>
+		      <dd>The community is non-transitive across ASes</dd>
+		    </dl>
+		  </dd>
+		  <dt>Remaining 6 bits:</dt>
+		  <dd>Together with the I and T bit, indicate the Type of the extended community.</dd>
+		</dl>
+	      </dd>
+	      <dt>Sub-Type Field:</dt>
+	      <dd>
+		Additional specification of the semantics of the value encoded in the structure
+		specified by the Type.
+	      </dd>
               <dt>Value Field:</dt>
               <dd>
                 The encoding of the Value Field is dependent on the "type" of the community as specified by the Type Field.
@@ -170,24 +156,17 @@
         <t>
           Two extended communities are declared equal only when all 8 octets of the community are equal.
         </t>
-        <t>
-          The two members in the tuple &lt;Type, Value&gt; should be enumerated to specify any community value. The remaining octets of the
-          community are interpreted based on the value of the Type field.
-        </t>
       </section>
     </section>
 
     <section title="Defined BGP Extended Community Types" anchor="bgp-ec-types">
       <t>
-        This section introduces a few extended types and defines the format of the Value Field for those types. The types introduced here
-        provide "templates", where each template is identified by the high- order octet of the extended community Type field, and the
-        low-order octet (sub-type) is used to indicate a particular type of extended community.
+        This section introduces a few extended community types and defines the format of the Value Field for those types. The types introduced here
+	provide "templates", where each template is identified by the extended community Type field, and the
+	Sub-Type field is used to indicate a particular type of extended community.
       </t>
 
       <section title="Two-Octet AS-Specific Extended Community" anchor="two-octet-as-ec">
-        <t>
-          This is an extended type with Type Field composed of 2 octets and Value Field composed of 6 octets.
-        </t>
         <figure>
           <artwork type="ascii-art">
             <![CDATA[
@@ -202,8 +181,7 @@
           </artwork>
         </figure>
         <t>
-          The value of the high-order octet of this extended type is either 0x00 or 0x40. The low-order octet of this extended type is
-          used to indicate sub-types.
+          The value of this type is either 0x00 or 0x40. The sub-types are allocated by IANA.
         </t>
         <dl newline="true">
           <dt>
@@ -237,9 +215,6 @@
       </section>
     
       <section title="IPv4-Address-Specific Extended Community" anchor="ipv4-addr-ec">
-        <t>
-          This is an extended type with Type Field composed of 2 octets and Value Field composed of 6 octets.
-        </t>
         <figure>
           <artwork type="ascii-art">
             <![CDATA[
@@ -254,8 +229,7 @@
           </artwork>
         </figure>
         <t>
-          The value of the high-order octet of this extended type is either 0x01 or 0x41. The low-order octet of this extended type is used
-          to indicate sub-types.
+          The value of this type is either 0x01 or 0x41. The sub-types are allocated by IANA.
         </t>
         <dl newline="true">
           <dt>
@@ -279,9 +253,6 @@
       </section>
 
       <section title="Opaque Extended Community" anchor="opaque-ec">
-        <t>
-          This is an extended type with Type Field composed of 2 octets and Value Field composed of 6 octets.
-        </t>
         <figure>
           <artwork type="ascii-art">
             <![CDATA[
@@ -296,11 +267,10 @@
           </artwork>
         </figure>
         <t>
-          The value of the high-order octet of this extended type is either 0x03 or 0x43. The low-order octet of this extended type is used
-          to indicate sub-types.
+          The value of this type is either 0x03 or 0x43. The sub-types are allocated by IANA.
         </t>
         <t>
-          This is a generic community of extended type. The value of the sub-type that should define the Value Field is to be assigned by
+          This is a generic community. The value of the sub-type that should define the Value Field is to be assigned by
           IANA.
         </t>
       </section>
@@ -317,20 +287,17 @@
         BGP. This is transitive across the Autonomous System boundary.
       </t>
       <t>
-        The Route Target Community is of an extended type.
-      </t>
-      <t>
-        The value of the high-order octet of the Type field for the Route Target Community can be 0x00 (as defined in
+        The value of the Type field for the Route Target Community can be 0x00 (as defined in
         <xref target="two-octet-as-ec"/>), 0x01 (as defined in <xref target="ipv4-addr-ec"/>), or 0x02 (as defined in <xref target="RFC5668"/>).
-        The value of the low-order octet of the Type field for this community is 0x02.
+        The value of the Sub-Type field for this community is 0x02.
       </t>
       <t>
-        When the value of the high-order octet of the Type field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
+        When the value of the Type field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
         numbering space that is administered by the organization to which the Autonomous System number carried in the Global Administrator
-        sub- field has been assigned by an appropriate authority.
+        sub-field has been assigned by an appropriate authority.
       </t>
       <t>
-        When the value of the high-order octet of the Type field is 0x01, the Local Administrator sub-field contains a number from a
+        When the value of the Type field is 0x01, the Local Administrator sub-field contains a number from a
         numbering space that is administered by the organization to which the IP address carried in the Global Administrator sub-field has
         been assigned by an appropriate authority.
       </t>
@@ -345,20 +312,17 @@
         transitive across the Autonomous System boundary.
       </t>
       <t>
-        The Route Origin Community is of an extended type.
-      </t>
-      <t>
-        The value of the high-order octet of the Type field for the Route Origin Community can be 0x00 (as defined in
+        The value of the Type field for the Route Origin Community can be 0x00 (as defined in
         <xref target="two-octet-as-ec"/>), 0x01 (as defined in <xref target="ipv4-addr-ec"/>), or 0x02 (as defined in <xref target="RFC5668"/>).
-        The value of the low-order octet of the Type field for this community is 0x03.
+        The value of the Sub-Type field for this community is 0x03.
       </t>
       <t>
-        When the value of the high-order octet of the Type field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
+        When the value of the Type field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
         numbering space that is administered by the organization to which the Autonomous System number carried in the Global Administrator
-        sub- field has been assigned by an appropriate authority.
+        sub-field has been assigned by an appropriate authority.
       </t>
       <t>
-        When the value of the high-order octet of the Type field is 0x01, the Local Administrator sub-field contains a number from a
+        When the value of the Type field is 0x01, the Local Administrator sub-field contains a number from a
         numbering space that is administered by the organization to which the IP address carried in the Global Administrator sub-field has
         been assigned by an appropriate authority.
       </t>
@@ -430,19 +394,7 @@
       </t>
       <section title="Registries for the Type Field">
         <t>
-          All the BGP Extended Communities contain a Type field.
-        </t>
-        <t>
-          The Type could be either regular or extended.
-          For a Regular Type, the IANA allocates a 1-octet type value;
-          for an Extended Type, the IANA allocates both a 1-octet type value and a 1-octet sub-type value.
-        </t>
-        <t>
-          The high-order octet values allocated for the Regular Types and for the Extended Types are mutually exclusive.
-          The value allocated for a Regular Type MUST NOT be reused as the value of the high-order octet when allocating an Extended Type.
-          The value of the high-order octet allocated for an Extended Type MUST NOT be reused when allocating a Regular Type.
-        </t>
-        <t>
+	  All the BGP Extended Communities contain a Type field and a Sub-Type field.
           The Type field also indicates whether the Extended Community is transitive or not.
           Future requests for assignment of a Type value must specify whether the Type value is intended for a transitive or
           a non-transitive Extended Community.
@@ -1056,12 +1008,20 @@
 
     <section anchor="Appendix" title="Comparison with RFC4360">
       <t>
-        The encodings and definitions of the extended communities are unchanged in this document.
+	The encodings and definitions of the extended communities are unchanged in this document.
       </t>
       <t>
         Besides addressing known errata in <xref target="RFC4360"/>, this document updates the following:
       </t>
       <ul>
+	<li>
+	  The regular class of extended communities has been removed
+          and the Type field is formally split into Type and Sub-Type, as there is
+	  no IANA-registered extended community type which would use the Sub-Type
+	  melded into the Value, as expected by <xref target="RFC4360" sectionFormat="comma" section="2"/>.
+	  This aligns with the approach used in most of the newer specifications,
+	  as well as in IANA registries.
+	</li>
         <li>
           <xref target="bgp-ec-types"/> now includes references to the case for the 4-Octet Autonomous System number.
         </li>
