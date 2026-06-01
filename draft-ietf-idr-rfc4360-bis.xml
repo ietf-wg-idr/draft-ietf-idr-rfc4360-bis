@@ -405,9 +405,10 @@
         same BGP AS Confederation (as defined in <xref target="RFC5065"/>).
       </t>
       <t>
-        By default, when a BGP speaker receives routes with non-transitive extended communities across Autonomous System or Confederation 
-        Member-AS boundaries, it SHOULD NOT remove these extended communities. The behavior MAY be configurable. The BGP speaker
-        SHOULD also allow local policies to match against or remove these extended communities.
+        By default, when a BGP speaker receives routes with non-transitive extended communities across Autonomous System or
+        Confederation Member-AS boundaries, it SHOULD NOT remove these extended communities. The behavior MAY be configurable. The BGP
+        speaker SHOULD also allow local policies to perform operations on these extended communities, such as matching, deleting, and
+        modifying.
       </t>
       <t>
         For IPv6 address-specific use-cases, one may consider using IPv6-Address-Specific BGP Extended Communities <xref target="RFC5701"/>.
