@@ -891,6 +891,9 @@
       </t>
       <t>
         Operators should also note the recommendations in <xref target="RFC7454" sectionFormat="comma" section="11"/>.
+        Proper filtering of the extended communities should always be exercised to prevent information leakage across different
+        administrative domains.
+        The type/subtype of the extended communities can also be used for such filtering mechanisms.
       </t>
     </section>
     <section title="Contributors" anchor="Contributors">
