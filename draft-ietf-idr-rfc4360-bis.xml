@@ -38,7 +38,8 @@
         this information, or for other applications.
       </t>
       <t>
-        This document obsoletes <xref target="RFC4360"/>.
+        This document obsoletes RFC 4360.
+        This document also updates RFC 5701 by incorporating the operations section.
       </t>
     </abstract>
   </front>
@@ -60,6 +61,10 @@
         It also allows one to specify whether a particular community is transitive or non-transitive across an Autonomous System (AS)
         boundary. Without structure, this can only be accomplished by explicitly enumerating all community values that will be denied or
         allowed and passed to BGP speakers in neighboring ASes based on the transitive property.
+      </t>
+      <t>
+        This document obsoletes <xref target="RFC4360"/>.
+        <xref target="operations"/> of this document also applies to <xref target="RFC5701"/> and effectively updates it.
       </t>
       <section title="Requirements Language" anchor="requirements">
         <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
