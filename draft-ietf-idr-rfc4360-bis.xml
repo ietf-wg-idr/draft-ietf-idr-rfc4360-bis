@@ -331,7 +331,7 @@
       </t>
       <t>
         When the value of the high-order octet of the Type field is 0x01, the Local Administrator sub-field contains a number from a
-        numbering space that is administered by the organization to which the IP address carried in the Global Administrator sub-field has
+        numbering space that is administered by the organization to which the IPv4 address carried in the Global Administrator sub-field has
         been assigned by an appropriate authority.
       </t>
       <t>
@@ -359,7 +359,7 @@
       </t>
       <t>
         When the value of the high-order octet of the Type field is 0x01, the Local Administrator sub-field contains a number from a
-        numbering space that is administered by the organization to which the IP address carried in the Global Administrator sub-field has
+        numbering space that is administered by the organization to which the IPv4 address carried in the Global Administrator sub-field has
         been assigned by an appropriate authority.
       </t>
       <t>
