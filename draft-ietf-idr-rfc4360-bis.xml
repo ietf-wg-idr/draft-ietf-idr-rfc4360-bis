@@ -872,6 +872,40 @@
             <xref target="RFC7153"/> includes further assignments of these registries.
           </t>
         </section>
+        <section title="Four-Octet AS-Specific Extended Community Sub-Types">
+          <t>
+            The IANA is requested to update the following references in the "Transitive Four-Octet AS-Specific Extended Community
+            Sub-Types" registry <xref target="IANA-BGP-EC-TRANS-FOUR-OCTET-AS"/>:
+          </t>
+          <table>
+            <name>Transitive Four-Octet AS-Specific Extended Community Sub-Types</name>
+            <thead>
+              <tr>
+                <th>SUB-TYPE VALUE</th>
+                <th>NAME</th>
+                <th>REFERENCE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left">0x02</td>
+                <td align="left">Route Target</td>
+                  <td align="left">
+                    <xref target="RFC5668"/>
+                    [this document]
+                  </td>
+              </tr>
+              <tr>
+                <td align="left">0x03</td>
+                <td align="left">Route Origin</td>
+                  <td align="left">
+                    <xref target="RFC5668"/>
+                    [this document]
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
       </section>
     </section>
 
@@ -1029,6 +1063,16 @@
       <reference anchor="IANA-BGP-EC-NONTRANS-OPAQUE" target="https://www.iana.org/assignments/bgp-extended-communities/bgp-extended-communities.xhtml#non-trans-opaque" derivedAnchor="IANA-BGP-EC-NONTRANS-OPAQUE">
         <front>
           <title>Non-Transitive Opaque Extended Community Sub-Types</title>
+          <author>
+            <organization showOnFrontPage="true">
+              IANA
+            </organization>
+          </author>
+        </front>
+      </reference>
+      <reference anchor="IANA-BGP-EC-TRANS-FOUR-OCTET-AS" target="https://www.iana.org/assignments/bgp-extended-communities/bgp-extended-communities.xhtml#trans-four-octet-as" derivedAnchor="IANA-BGP-EC-TRANS-FOUR-OCTET-AS">
+        <front>
+          <title>Transitive Four-Octet AS-Specific Extended Community Sub-Types</title>
           <author>
             <organization showOnFrontPage="true">
               IANA
