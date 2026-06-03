@@ -890,10 +890,9 @@
         and is therefore not addressed here.
       </t>
       <t>
-        Operators should also note the recommendations in <xref target="RFC7454" sectionFormat="comma" section="11"/>.
         Proper filtering of the extended communities should always be exercised to prevent information leakage across different
         administrative domains.
-        The type/subtype of the extended communities can also be used for such filtering mechanisms.
+        The type/sub-type of the extended communities can also be used for such filtering mechanisms.
       </t>
     </section>
     <section title="Contributors" anchor="Contributors">
@@ -932,7 +931,6 @@
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.5701.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7120.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7153.xml"/>
-      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7454.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7606.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8126.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
