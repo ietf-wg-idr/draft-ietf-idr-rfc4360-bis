@@ -305,7 +305,6 @@
       <section title="Notes about the AS-Specific Extended Community for 4-Octet ASes" anchor="four-octet-as-ec">
         <t>
           A 4-Octet AS-Specific type of extended community is defined in <xref target="RFC5668"/> and otherwise not covered in this document.
-          It can carry a 4-Octet Autonomous System number.
         </t>
       </section>
     </section>
