@@ -461,10 +461,6 @@
             Further definitions of sub-type registries, along with their allocation policies, can be found in <xref target="RFC7153"/>.
           </t>
           <t>
-            Should the conditions be met, early sub-type registry creation can be initiated and tracked using the Early Registry Creation
-            process.
-          </t>
-          <t>
             The following table summarizes the ranges for the assignment of the "BGP Transitive Extended Community Types" registry
             <xref target="IANA-BGP-EC-TRANS"/>:
           </t>
