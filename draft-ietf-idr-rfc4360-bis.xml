@@ -902,31 +902,30 @@
         <ul>
           <li>
             <t>
-              Operators SHOULD filter transitive and non-transitive extended communities at the boundary of different administrative domains
-              on both transmission and reception using appropriate routing policies.
-              It prevents extended communities outside the administrative domain from interacting inappropriately with the operator's
-              network.
+              Operators should filter transitive and non-transitive extended communities at the boundary of different administrative domains
+              on both transmission and reception using appropriate routing policies, since this prevents extended communities outside the
+              administrative domain from interacting inappropriately with the operator's network.
             </t>
           </li>
           <li>
             <t>
-              Implementations SHOULD provide policy mechanisms to filter extended communities based on type, and possibly sub-type, to
+              Implementations should provide policy mechanisms to filter extended communities based on type, and possibly sub-type, to
               permit filtering the entire class of extended communities.
-              Implementations MAY also provide the flexibility to match or inverse-match a set of extended communities for building white or
-              black lists.
+              Implementations may also provide the flexibility to match or inverse-match a set of extended communities for building
+              permit/deny lists.
             </t>
           </li>
           <li>
             <t>
-              Implementations that understand the internal format of a defined extended community SHOULD provide per-community match
+              Implementations that understand the internal format of a defined extended community should provide per-community match
               capability.
-              Implementations that don't understand the internal format MAY match against the value field opaquely.
+              Implementations that don't understand the internal format may match against the value field opaquely.
             </t>
           </li>
           <li>
             <t>
-              Implementations SHOULD provide mechanisms to strip all extended communities at the boundary of administrative domains.
-              Implementations MAY strip all extended communities by default while providing knobs to modify the default behavior.
+              Implementations should provide mechanisms to strip all extended communities at the boundary of administrative domains.
+              Implementations may strip all extended communities by default while providing knobs to modify the default behavior.
             </t>
           </li>
         </ul>
