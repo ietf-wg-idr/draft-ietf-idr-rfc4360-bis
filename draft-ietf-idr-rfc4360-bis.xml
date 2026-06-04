@@ -877,9 +877,16 @@
 
     <section title="Security Considerations" anchor="security-considerations">
       <t>
-        This document does not change any underlying security issues associated with any other BGP Communities mechanism.
-        Since any intermediate AS in the path may have added, deleted, or altered the BGP Extended Communities attribute,
-        an AS relying on such an attribute carried in the BGP Update message must have trust in every other AS in the path.
+        The BGP Extended Communities provide a general mechanism for labeling BGP routes and thus share security considerations similar to
+        BGP Communities <xref target="RFC1997"/> and BGP Large Communities <xref target="RFC8092"/>.
+      </t>
+      <t>
+        Additionally, extended communities are used in several specialized ways to implement or augment other BGP signaling mechanisms.
+        For example, the route-target extended community, defined in this document, is used to signal Layer 3 VPN membership.
+      </t>
+      <t>
+        Since any intermediate AS in the path may have added, deleted, or altered the BGP Extended Communities attribute, an AS relying on
+        such an attribute carried in the BGP Update message must have trust in every other AS in the path.
         Specifying the mechanism to provide such trust is beyond the scope of this document.
       </t>
       <t>
@@ -890,9 +897,39 @@
         and is therefore not addressed here.
       </t>
       <t>
-        Proper filtering of the extended communities should always be exercised to prevent information leakage across different
-        administrative domains.
-        The type/sub-type of the extended communities can also be used for such filtering mechanisms.
+        To prevent information leakage or privacy breach across different administrative domains, proper filtering of the extended
+        communities should always be exercised:
+        <ul>
+          <li>
+            <t>
+              Operators SHOULD filter transitive and non-transitive extended communities at the boundary of different administrative domains
+              on both transmission and reception using appropriate routing policies.
+              It prevents extended communities outside the administrative domain from interacting inappropriately with the operator's
+              network.
+            </t>
+          </li>
+          <li>
+            <t>
+              Implementations SHOULD provide policy mechanisms to filter extended communities based on type, and possibly sub-type, to
+              permit filtering the entire class of extended communities.
+              Implementations MAY also provide the flexibility to match or inverse-match a set of extended communities for building white or
+              black lists.
+            </t>
+          </li>
+          <li>
+            <t>
+              Implementations that understand the internal format of a defined extended community SHOULD provide per-community match
+              capability.
+              Implementations that don't understand the internal format MAY match against the value field opaquely.
+            </t>
+          </li>
+          <li>
+            <t>
+              Implementations SHOULD provide mechanisms to strip all extended communities at the boundary of administrative domains.
+              Implementations MAY strip all extended communities by default while providing knobs to modify the default behavior.
+            </t>
+          </li>
+        </ul>
       </t>
     </section>
     <section title="Contributors" anchor="Contributors">
