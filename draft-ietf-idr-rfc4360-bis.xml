@@ -885,9 +885,10 @@
         For example, the route-target extended community, defined in this document, is used to signal Layer 3 VPN membership.
       </t>
       <t>
-        Since any intermediate AS in the path may have added, deleted, or altered the BGP Extended Communities attribute, an AS relying on
-        such an attribute carried in the BGP Update message must have trust in every other AS in the path.
-        Specifying the mechanism to provide such trust is beyond the scope of this document.
+        Since any intermediate BGP speaker along the route propagation path may have added, deleted, or altered the BGP Extended Communities
+        attribute, deployments relying on such an attribute carried in the BGP Update message must trust every other BGP speaker in the
+        path.
+        However, specifying the mechanism to provide such trust is beyond the scope of this document.
       </t>
       <t>
         The BGP Extended Communities attribute itself does not protect the integrity of each extended community value.
