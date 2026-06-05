@@ -881,10 +881,6 @@
         BGP Communities <xref target="RFC1997"/> and BGP Large Communities <xref target="RFC8092"/>.
       </t>
       <t>
-        Additionally, extended communities are used in several specialized ways to implement or augment other BGP signaling mechanisms.
-        For example, the route-target extended community, defined in this document, is used to signal Layer 3 VPN membership.
-      </t>
-      <t>
         Since any intermediate BGP speaker along the route propagation path may have added, deleted, or altered the BGP Extended Communities
         attribute, deployments relying on such an attribute carried in the BGP Update message must trust every other BGP speaker in the
         path.
@@ -898,7 +894,14 @@
         and is therefore not addressed here.
       </t>
       <t>
-        To prevent information leakage or privacy breach across different administrative domains, proper filtering of the extended
+        Additionally, extended communities are used in several specialized ways to implement or augment other BGP signaling mechanisms.
+        For example, the route-target extended community, defined in this document, is used to signal Layer 3 VPN membership.
+        In some scenarios, these mechanisms are used to construct internal infrastructure. Therefore, these extended communities carry
+        information private to a specific administrative domain.
+        Leaking such extended communities into other administrative domains poses significant security risks.
+      </t>
+      <t>
+        To prevent information leakage or privacy breaches across different administrative domains, proper filtering of the extended
         communities should always be exercised:
         <ul>
           <li>
@@ -926,6 +929,10 @@
           <li>
             <t>
               Implementations should provide mechanisms to strip all extended communities at the boundary of administrative domains.
+            </t>
+          </li>
+          <li>
+            <t>
               Implementations may strip all extended communities by default while providing knobs to modify the default behavior.
             </t>
           </li>
@@ -951,7 +958,7 @@
       </t>
       <t>
         We also thank Jeffrey Haas, Robert Raszuk, Bruno Decraene, Linda Dunbar, Yingzhen Qu, Jie Dong, Lizhen Qiang, Erik Auerswald, Aijun
-        Wang, and John Scudder for their suggestions and feedback on this document.
+        Wang, John Scudder, and Job Snijders for their suggestions and feedback on this document.
       </t>
     </section>
   </middle>
