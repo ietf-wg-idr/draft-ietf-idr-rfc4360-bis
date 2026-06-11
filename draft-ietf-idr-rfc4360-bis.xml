@@ -691,6 +691,7 @@
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.6793.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7153.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7606.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8092.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
       <reference anchor="IANA-BGP-PATH-ATTRIBUTES" target="https://www.iana.org/assignments/bgp-parameters/bgp-parameters.xhtml#bgp-parameters-2" derivedAnchor="IANA-BGP-PATH-ATTRIBUTES">
         <front>
