@@ -911,10 +911,14 @@
 
     <section title="Security Considerations" anchor="security-considerations">
       <t>
-        This document does not change any underlying security issues associated with any other BGP Communities mechanism.
-        Since any intermediate AS in the path may have added, deleted, or altered the BGP Extended Communities attribute,
-        an AS relying on such an attribute carried in the BGP Update message must have trust in every other AS in the path.
-        Specifying the mechanism to provide such trust is beyond the scope of this document.
+        The BGP Extended Communities provide a general mechanism for labeling BGP routes and thus share security considerations similar to
+        BGP Communities <xref target="RFC1997"/> and BGP Large Communities <xref target="RFC8092"/>.
+      </t>
+      <t>
+        Since any intermediate BGP speaker along the route propagation path may have added, deleted, or altered the BGP Extended Communities
+        attribute, deployments relying on such an attribute carried in the BGP Update message must trust every other BGP speaker in the
+        path.
+        However, specifying the mechanism to provide such trust is beyond the scope of this document.
       </t>
       <t>
         The BGP Extended Communities attribute itself does not protect the integrity of each extended community value.
@@ -924,7 +928,49 @@
         and is therefore not addressed here.
       </t>
       <t>
-        Operators should also note the recommendations in <xref target="RFC7454" sectionFormat="comma" section="11"/>.
+        Additionally, extended communities are used in several specialized ways to implement or augment other BGP signaling mechanisms.
+        For example, the route-target extended community, defined in this document, is used to signal Layer 3 VPN membership.
+        In some scenarios, these mechanisms are used to construct internal infrastructure. Therefore, these extended communities carry
+        information private to a specific administrative domain.
+        Leaking such extended communities into other administrative domains poses significant security risks.
+      </t>
+      <t>
+        To prevent information leakage or privacy breaches across different administrative domains, proper filtering of the extended
+        communities should always be exercised:
+        <ul>
+          <li>
+            <t>
+              Operators should filter transitive and non-transitive extended communities at the boundary of different administrative domains
+              on both transmission and reception using appropriate routing policies, since this prevents extended communities outside the
+              administrative domain from interacting inappropriately with the operator's network.
+            </t>
+          </li>
+          <li>
+            <t>
+              Implementations should provide policy mechanisms to filter extended communities based on type, and possibly sub-type, to
+              permit filtering the entire class of extended communities.
+              Implementations may also provide the flexibility to match or inverse-match a set of extended communities for building
+              permit/deny lists.
+            </t>
+          </li>
+          <li>
+            <t>
+              Implementations that understand the internal format of a defined extended community should provide per-community match
+              capability.
+              Implementations that don't understand the internal format may match against the value field opaquely.
+            </t>
+          </li>
+          <li>
+            <t>
+              Implementations should provide mechanisms to strip all extended communities at the boundary of administrative domains.
+            </t>
+          </li>
+          <li>
+            <t>
+              Implementations may strip all extended communities by default while providing knobs to modify the default behavior.
+            </t>
+          </li>
+        </ul>
       </t>
     </section>
     <section title="Contributors" anchor="Contributors">
@@ -946,7 +992,7 @@
       </t>
       <t>
         We also thank Jeffrey Haas, Robert Raszuk, Bruno Decraene, Linda Dunbar, Yingzhen Qu, Jie Dong, Lizhen Qiang, Erik Auerswald, Aijun
-        Wang, and John Scudder for their suggestions and feedback on this document.
+        Wang, John Scudder, and Job Snijders for their suggestions and feedback on this document.
       </t>
     </section>
   </middle>
@@ -964,7 +1010,6 @@
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.6793.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7120.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7153.xml"/>
-      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7454.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7606.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8126.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
