@@ -391,7 +391,7 @@
       </t>
       <t>
         By default if a range of routes is to be aggregated and the resultant aggregate's path attributes do not carry the ATOMIC_AGGREGATE
-        attribute, then the resulting aggregate should have an Extended Communities path attribute that contains the set union of all the
+        attribute, then the resulting aggregate MAY have an Extended Communities path attribute that contains the set union of all the
         Extended Communities from all of the aggregated routes. The default behavior could be overridden via local configuration, in which
         case handling the Extended Communities attribute in the presence of route aggregation becomes a matter of the local policy of the
         BGP speaker that performs the aggregation.
