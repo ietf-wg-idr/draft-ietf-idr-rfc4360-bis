@@ -414,6 +414,34 @@
         modifying.
       </t>
       <t>
+        For example, consider a router R1 with the following BGP sessions:
+      </t>
+      <ul>
+        <li>
+          eBGP session S1 connects to a neighbor outside the AS Confederation.
+        </li>
+        <li>
+          eBGP session S2 connects to a neighbor within the same AS Confederation.
+        </li>
+        <li>
+          iBGP session S3 connects to an iBGP neighbor.
+        </li>
+      </ul>
+      <t>
+        For a route P1 with a non-transitive extended community N1 attached, the default behavior is:
+      </t>
+      <ul>
+        <li>
+          R1 SHOULD NOT remove N1 from P1 on receipt by default.
+        </li>
+        <li>
+          R1 MUST NOT originate or propagate P1 with N1 attached over session S1 without explicit configuration.
+        </li>
+        <li>
+          R1 SHOULD NOT remove N1 when advertising P1 over sessions S2 and S3 without explicit configuration.
+        </li>
+      </ul>
+      <t>
         For IPv6 address-specific use-cases, one may consider using IPv6-Address-Specific BGP Extended Communities <xref target="RFC5701"/>.
       </t>
     </section>
