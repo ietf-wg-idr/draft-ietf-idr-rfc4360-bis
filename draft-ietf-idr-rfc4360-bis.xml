@@ -39,7 +39,9 @@
       </t>
       <t>
         This document obsoletes RFC 4360.
-        This document also updates RFC 5701 by incorporating the operations section.
+      </t>
+      <t>
+        This document also adds an "Operational Considerations" section to RFC 5701.
       </t>
     </abstract>
   </front>
@@ -64,7 +66,9 @@
       </t>
       <t>
         This document obsoletes <xref target="RFC4360"/>.
-        <xref target="operations"/> of this document also applies to <xref target="RFC5701"/> and effectively updates it.
+      </t>
+      <t>
+        This document also attaches <xref target="operations"/> to <xref target="RFC5701"/>.
       </t>
       <section title="Requirements Language" anchor="requirements">
         <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
@@ -372,7 +376,7 @@
 
     <section title="Operational Considerations" anchor="operations">
       <t>
-        This section also applies to <xref target="RFC5701"/>.
+        This section is also attached to <xref target="RFC5701"/>.
       </t>
       <t>
         Since the encodings of the extended communities are unchanged, this document poses no
