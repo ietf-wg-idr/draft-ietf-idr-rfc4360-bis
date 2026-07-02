@@ -719,7 +719,6 @@
   <back>
     <displayreference target="RFC4271" to="BGP-4"/>
     <references title="Normative References">
-      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.1997.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4271.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.5065.xml"/>
@@ -728,7 +727,6 @@
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.6793.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7153.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.7606.xml"/>
-      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8092.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
       <reference anchor="IANA-BGP-PATH-ATTRIBUTES" target="https://www.iana.org/assignments/bgp-parameters/bgp-parameters.xhtml#bgp-parameters-2" derivedAnchor="IANA-BGP-PATH-ATTRIBUTES">
         <front>
@@ -882,8 +880,10 @@
       </reference>
     </references>
     <references title="Informative References">
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.1997.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4360.xml"/>
       <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.4364.xml"/>
+      <xi:include href="http://bib.ietf.org/public/rfc/bibxml/reference.RFC.8092.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.draft-decraene-idr-rfc4360-clarification-00.xml"/>
     </references>
 
