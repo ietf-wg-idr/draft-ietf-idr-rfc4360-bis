@@ -32,7 +32,7 @@
     <keyword>BGP, Extended Community</keyword>
     <abstract>
       <t>
-        This document describes the "extended community" BGP-4 attribute.
+        This document describes the "Extended Communities" BGP-4 attribute.
         This attribute provides a mechanism for labeling information carried
         in BGP-4.  These labels can be used to control the distribution of
         this information, or for other applications.
@@ -48,15 +48,15 @@
     <section>
       <name>Introduction</name>
       <t>
-        The Extended Community Attribute provides a mechanism for labeling information carried in BGP-4 <xref target="RFC4271"/>.
-        It provides two important enhancements over the existing BGP Community Attribute <xref target="RFC1997"/>:
+        The BGP Extended Communities attribute provides a mechanism for labeling information carried in BGP-4 <xref target="RFC4271"/>.
+        It provides two important enhancements over the existing BGP Communities attribute <xref target="RFC1997"/>:
       </t>
       <ul>
         <li>An extended range, ensuring that communities can be assigned for a plethora of uses, without fear of overlap.</li>
         <li>The addition of a Type field provides structure for the community space.</li>
       </ul>
       <t>
-        The addition of structure allows the usage of policy based on the application for which the community value will be used. For
+        The addition of structure allows the usage of policy-based on the application for which the community value will be used. For
         example, one can filter out all communities of a particular type, or allow only certain values for a particular type of community.
         It also allows one to specify whether a particular community is transitive or non-transitive across an Autonomous System (AS)
         boundary. Without structure, this can only be accomplished by explicitly enumerating all community values that will be denied or
@@ -78,13 +78,13 @@
 
     <section title="BGP Extended Communities Attribute" anchor="bgp-ec-attr">
       <t>
-        The Extended Communities Attribute is a transitive optional BGP attribute, with the Type Code 16. The attribute consists of a set
+        The Extended Communities attribute is a transitive optional BGP attribute, with the Type Code 16. The attribute consists of a set
         of "extended communities". All routes with the Extended Communities attribute belong to the communities listed in the attribute.
       </t>
-      <section title="BGP Extended Community Attribute Encoding" anchor="bgp-ec-encoding">
+      <section title="BGP Extended Communities Attribute Encoding" anchor="bgp-ec-encoding">
         <dl newline="true">
           <dt>
-            Each Extended Community is encoded as an 8-octet quantity inside the BGP Extended Community Attribute, as follows:
+            Each Extended Community is encoded as an 8-octet quantity inside the BGP Extended Communities attribute, as follows:
           </dt>
           <dd>
             <figure>
@@ -142,7 +142,7 @@
                       <dd>
                         <dl>
                           <dt>Value 0:</dt>
-                          <dd>IANA-assignable type using the "First Come First Serve" policy</dd>
+                          <dd>IANA-assignable type using the "First Come First Served" policy</dd>
                           <dt>Value 1:</dt>
                           <dd>
                             Part of this Type Field space is for IANA assignable types using either the Standard Action or the Early IANA
@@ -316,7 +316,7 @@
 
     <section title="Route Target Community">
       <t>
-        The Route Target Community identifies one or more routers that may receive a set of routes (that carry this Community) carried by
+        The Route Target Community identifies one or more routers that may receive a set of routes (that carry this community) carried by
         BGP. This is transitive across the Autonomous System boundary.
       </t>
       <t>
@@ -344,7 +344,7 @@
 
     <section title="Route Origin Community">
       <t>
-        The Route Origin Community identifies one or more routers that inject a set of routes (that carry this Community) into BGP. This is
+        The Route Origin Community identifies one or more routers that inject a set of routes (that carry this community) into BGP. This is
         transitive across the Autonomous System boundary.
       </t>
       <t>
@@ -383,7 +383,7 @@
         peers.
       </t>
       <t>
-        The Extended Community attribute MUST NOT be used to modify the BGP best path selection algorithm in a way that leads to forwarding
+        The Extended Communities attribute MUST NOT be used to modify the BGP best path selection algorithm in a way that leads to forwarding
         loops.
       </t>
       <t>
@@ -402,9 +402,9 @@
       </t>
       <t>
         A route may carry both the BGP Communities attribute, as defined in
-        <xref target="RFC1997"/>, and the Extended BGP Communities attribute.
+        <xref target="RFC1997"/>, and the BGP Extended Communities attribute.
         In this case, the BGP Communities attribute is handled as specified in 
-        <xref target="RFC1997"/>, and the Extended BGP Communities attribute is handled as specified in this document.
+        <xref target="RFC1997"/>, and the BGP Extended Communities attribute is handled as specified in this document.
       </t>
       <t>
         Non-transitive extended communities MUST NOT be sent (originated or propagated) across an Autonomous System boundary unless
@@ -425,7 +425,7 @@
     <section title="Error Handling" anchor="error-handling">
       <t>
         <xref target="RFC7606" sectionFormat="comma" section="7.14"/>,
-        defines the error handling procedure for the Extended Community attribute.
+        defines the error handling procedure for the Extended Communities attribute.
       </t>
     </section>
 
@@ -597,8 +597,9 @@
 
     <section title="Security Considerations" anchor="security-considerations">
       <t>
-        The BGP Extended Communities provide a general mechanism for labeling BGP routes and thus share security considerations similar to
-        BGP Communities <xref target="RFC1997"/> and BGP Large Communities <xref target="RFC8092"/>.
+        The BGP Extended Communities attribute provide a general mechanism for labeling BGP routes
+        and thus share security considerations similar to BGP Communities <xref target="RFC1997"/>
+        and BGP Large Communities <xref target="RFC8092"/>.
       </t>
       <t>
         Since any intermediate BGP speaker along the route propagation path may have added, deleted, or altered the BGP Extended Communities
