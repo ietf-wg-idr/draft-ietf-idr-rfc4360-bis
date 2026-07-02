@@ -593,7 +593,7 @@
 
     <section title="Security Considerations" anchor="security-considerations">
       <t>
-        The BGP Extended Communities provide a general mechanism for labeling BGP routes 
+        BGP Extended Communities provide a general mechanism for labeling BGP routes 
         and thus share security considerations similar to BGP Communities <xref target="RFC1997"/>
         and BGP Large Communities <xref target="RFC8092"/>.
       </t>
