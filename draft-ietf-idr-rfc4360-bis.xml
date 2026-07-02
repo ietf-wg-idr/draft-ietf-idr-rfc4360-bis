@@ -370,9 +370,13 @@
       </t>
     </section>
 
-    <section title="Operations" anchor="operations">
+    <section title="Operational Considerations" anchor="operations">
       <t>
         This section also applies to <xref target="RFC5701"/>.
+      </t>
+      <t>
+        Since the encodings of the extended communities are unchanged, this document poses no
+        backward compatibility issues with <xref target="RFC4360"/>.
       </t>
       <t>
         A BGP speaker may use the Extended Communities attribute to control which routing information it accepts or distributes to its
@@ -390,7 +394,7 @@
         A BGP speaker receiving a route with the Extended Communities attribute MAY modify this attribute according to the local policy.
       </t>
       <t>
-        By default if a range of routes is to be aggregated and the resultant aggregate's path attributes do not carry the ATOMIC_AGGREGATE
+        By default, if a range of routes is to be aggregated and the resultant aggregate's path attributes do not carry the ATOMIC_AGGREGATE
         attribute, then the resulting aggregate should have an Extended Communities path attribute that contains the set union of all the
         Extended Communities from all of the aggregated routes. The default behavior could be overridden via local configuration, in which
         case handling the Extended Communities attribute in the presence of route aggregation becomes a matter of the local policy of the
