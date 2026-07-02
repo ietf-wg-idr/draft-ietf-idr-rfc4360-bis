@@ -55,7 +55,7 @@
       </t>
       <ul>
         <li>An extended range, ensuring that communities can be assigned for a plethora of uses, without fear of overlap.</li>
-        <li>The addition of a Type field provides structure for the community space.</li>
+        <li>The addition of a Type Field provides structure for the community space.</li>
       </ul>
       <t>
         The addition of structure allows the usage of policy-based on the application for which the community value will be used. For
@@ -164,7 +164,7 @@
                         </dl>
                       </dd>
                       <dt>Remaining 6 bits:</dt>
-                      <dd>Together with the I and T bit, indicate the Type of the extended community.</dd>
+                      <dd>Together with the I and T bits, indicate the Type of the extended community.</dd>
                     </dl>
                   </dd>
                 </dl>
@@ -181,7 +181,7 @@
         </t>
         <t>
           The two members in the tuple &lt;Type, Value&gt; should be enumerated to specify any community value. The remaining octets of the
-          community are interpreted based on the value of the Type field.
+          community are interpreted based on the value of the Type Field.
         </t>
       </section>
     </section>
@@ -189,7 +189,7 @@
     <section title="Defined BGP Extended Community Types" anchor="bgp-ec-types">
       <t>
         This section introduces a few extended types and defines the format of the Value Field for those types. The types introduced here
-        provide "templates", where each template is identified by the high- order octet of the extended community Type field, and the
+        provide "templates", where each template is identified by the high-order octet of the extended community Type Field, and the
         low-order octet (sub-type) is used to indicate a particular type of extended community.
       </t>
 
@@ -327,17 +327,17 @@
         The Route Target Community is of an extended type.
       </t>
       <t>
-        The value of the high-order octet of the Type field for the Route Target Community can be 0x00 (as defined in
+        The value of the high-order octet of the Type Field for the Route Target Community can be 0x00 (as defined in
         <xref target="two-octet-as-ec"/>), 0x01 (as defined in <xref target="ipv4-addr-ec"/>), or 0x02 (as defined in <xref target="RFC5668"/>).
-        The value of the low-order octet of the Type field for this community is 0x02.
+        The value of the low-order octet of the Type Field for this community is 0x02.
       </t>
       <t>
-        When the value of the high-order octet of the Type field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
+        When the value of the high-order octet of the Type Field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
         numbering space that is administered by the organization to which the Autonomous System number carried in the Global Administrator
         sub- field has been assigned by an appropriate authority.
       </t>
       <t>
-        When the value of the high-order octet of the Type field is 0x01, the Local Administrator sub-field contains a number from a
+        When the value of the high-order octet of the Type Field is 0x01, the Local Administrator sub-field contains a number from a
         numbering space that is administered by the organization to which the IPv4 address carried in the Global Administrator sub-field has
         been assigned by an appropriate authority.
       </t>
@@ -355,17 +355,17 @@
         The Route Origin Community is of an extended type.
       </t>
       <t>
-        The value of the high-order octet of the Type field for the Route Origin Community can be 0x00 (as defined in
+        The value of the high-order octet of the Type Field for the Route Origin Community can be 0x00 (as defined in
         <xref target="two-octet-as-ec"/>), 0x01 (as defined in <xref target="ipv4-addr-ec"/>), or 0x02 (as defined in <xref target="RFC5668"/>).
-        The value of the low-order octet of the Type field for this community is 0x03.
+        The value of the low-order octet of the Type Field for this community is 0x03.
       </t>
       <t>
-        When the value of the high-order octet of the Type field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
+        When the value of the high-order octet of the Type Field is 0x00 or 0x02, the Local Administrator sub-field contains a number from a
         numbering space that is administered by the organization to which the Autonomous System number carried in the Global Administrator
         sub- field has been assigned by an appropriate authority.
       </t>
       <t>
-        When the value of the high-order octet of the Type field is 0x01, the Local Administrator sub-field contains a number from a
+        When the value of the high-order octet of the Type Field is 0x01, the Local Administrator sub-field contains a number from a
         numbering space that is administered by the organization to which the IPv4 address carried in the Global Administrator sub-field has
         been assigned by an appropriate authority.
       </t>
