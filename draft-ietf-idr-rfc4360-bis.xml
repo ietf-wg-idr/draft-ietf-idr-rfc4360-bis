@@ -446,13 +446,13 @@
       </t>
       <ul>
         <li>
-          R1 SHOULD NOT remove N1 from P1 on receipt by default.
+          R1 should not remove N1 from P1 on receipt by default.
         </li>
         <li>
-          R1 MUST NOT originate or propagate P1 with N1 attached over session S1 without explicit configuration.
+          R1 must not originate or propagate P1 with N1 attached over session S1 without explicit configuration.
         </li>
         <li>
-          R1 SHOULD NOT remove N1 when advertising P1 over sessions S2 and S3 without explicit configuration.
+          R1 should not remove N1 when advertising P1 over sessions S2 and S3 without explicit configuration.
         </li>
       </ul>
       <t>
