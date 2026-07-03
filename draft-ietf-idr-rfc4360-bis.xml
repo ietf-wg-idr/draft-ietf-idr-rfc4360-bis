@@ -121,9 +121,12 @@
                   The size of the Type Field for Regular Types is 1 octet, and the size of the Type Field for Extended Types is 2 octets.
                 </t>
                 <t>
-                  The value of the high-order octet of the Type Field determines if an extended community is a Regular Type or an Extended
-                  Type. The class of a type (Regular or Extended) is not encoded in the structure of the type itself. The
-                  class of a type is specified in the document that defines the type and the IANA registry.
+                  The value of the high-order octet of the Type Field determines if an extended
+                  community is a Regular Type or an Extended Type.
+                  The class of a type (Regular or Extended) is not encoded in the structure of the type itself.
+                  The class of a type is specified in the document that defines the type,
+                  the IANA BGP Transitive Extended Community Types registry <xref target="IANA-BGP-EC-TRANS"/>,
+                  and the IANA BGP Non-Transitive Extended Community Types registry <xref target="IANA-BGP-EC-NONTRANS"/>.
                 </t>
                 <dl newline="true">
                   <dt>
