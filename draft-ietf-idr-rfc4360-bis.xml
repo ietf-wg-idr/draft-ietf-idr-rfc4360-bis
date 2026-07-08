@@ -68,6 +68,10 @@
         This document obsoletes <xref target="RFC4360"/>.
       </t>
       <t>
+      </t>
+      <t>
+        The encodings described in this document do not support IPv6-Address-Specific use-cases.
+        For such use-cases, one may consider using IPv6-Address-Specific BGP Extended Communities <xref target="RFC5701"/>.
         This document also attaches <xref target="operations"/> to <xref target="RFC5701"/>.
       </t>
       <section title="Requirements Language" anchor="requirements">
@@ -458,9 +462,6 @@
           R1 should not remove N1 when advertising P1 over sessions S2 and S3 without explicit configuration.
         </li>
       </ul>
-      <t>
-        For IPv6 address-specific use-cases, one may consider using IPv6-Address-Specific BGP Extended Communities <xref target="RFC5701"/>.
-      </t>
     </section>
 
     <section title="Error Handling" anchor="error-handling">
