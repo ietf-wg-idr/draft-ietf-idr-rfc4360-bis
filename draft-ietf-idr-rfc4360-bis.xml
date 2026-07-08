@@ -226,14 +226,20 @@
               <dt>Global Administrator sub-field: 2 octets</dt>
                 <dd>
                   <t>
-                    This sub-field contains an Autonomous System number assigned by IANA.
+                    This sub-field SHOULD be set to the Autonomous System number of the router that
+                    attaches the extended community, unless:
                   </t>
-                  <t>
-                    For a non-mappable four-octet Autonomous System number <xref target="RFC6793"/>,
-                    the BGP speaker SHOULD fill AS_TRANS <xref target="RFC6793"/> in this field.
-                    This sub-field MAY contain an arbitrary value chosen by the operator,
-                    provided it is allowed by the specific extended community.
-                  </t>
+                  <ul>
+                    <li>
+                      For a non-mappable four-octet Autonomous System number <xref target="RFC6793"/>,
+                      AS_TRANS <xref target="RFC6793"/> SHOULD be used in this sub-field.
+                    </li>
+                    <li>
+                      Should the operational requirements arise, it MAY contain an arbitrary value
+                      chosen by the operator, provided it is allowed by the specific extended
+                      community.
+                    </li>
+                  </ul>
                 </dd>
               <dt>Local Administrator sub-field: 4 octets</dt>
               <dd>
