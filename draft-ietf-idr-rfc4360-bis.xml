@@ -231,13 +231,20 @@
                   </t>
                   <ul>
                     <li>
-                      For a non-mappable four-octet Autonomous System number <xref target="RFC6793"/>,
-                      AS_TRANS <xref target="RFC6793"/> SHOULD be used in this sub-field.
+                      The Autonomous System number is a non-mappable four-octet Autonomous System
+                      Number <xref target="RFC6793"/>.
+                      If an operator prefers to carry this Autonomous System number in this
+                      sub-field and can accept the correspondingly smaller Local Administrator
+                      space, use of the "Four-Octet AS-Specific Extended Community" <xref target="RFC5668"/>,
+                      when supported, is RECOMMENDED.
+                      Otherwise, the BGP speaker SHOULD fill this field with the AS_TRANS value <xref target="RFC6793"/>.
+                      Guidance for filtering extended communities described in <xref target="security-considerations"/>
+                      should also be considered.
                     </li>
                     <li>
-                      Should the operational requirements arise, it MAY contain an arbitrary value
-                      chosen by the operator, provided it is allowed by the specific extended
-                      community.
+                      Should operational requirements arise, it MAY contain an arbitrary value
+                      chosen by the operator, provided this value is allowed by the specific
+                      extended community.
                     </li>
                   </ul>
                 </dd>
@@ -898,21 +905,19 @@
 
     <section anchor="Appendix" title="Comparison with RFC4360">
       <t>
-        The encodings and definitions of the extended communities are unchanged in this document.
-      </t>
-      <t>
         Besides addressing known errata in <xref target="RFC4360"/>, this document updates the following:
       </t>
       <ul>
         <li>
-          <xref target="bgp-ec-types"/> now includes references to the case for the 4-Octet Autonomous System number.
+          <xref target="bgp-ec-types"/> now includes the use-cases for the 4-Octet Autonomous System number.
+          The encodings and definitions for 2-Octet Autonomous System number use-cases remain unchanged.
         </li>
         <li>
           <xref target="operations"/> clarifies the operations of non-transitive extended communities across
           Autonomous System or Confederation Member-AS boundaries.
         </li>
         <li>
-          <xref target="error-handling"/> is added to describe the error handling procedures.
+          <xref target="error-handling"/> is added to describe the error-handling procedures.
         </li>
         <li>
           <xref target="iana-considerations"/> is updated to reflect the current IANA registry status.
@@ -920,7 +925,7 @@
           This section also contains similar updates for the Sub-Types defined.
         </li>
         <li>
-          <xref target="security-considerations"/> is updated to reflect the current security practice.
+          <xref target="security-considerations"/> is updated to reflect current security practices.
         </li>
       </ul>
     </section>
