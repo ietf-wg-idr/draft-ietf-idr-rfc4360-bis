@@ -74,6 +74,12 @@
         For such use-cases, one may consider using IPv6-Address-Specific BGP Extended Communities <xref target="RFC5701"/>.
         This document also attaches <xref target="operations"/> to <xref target="RFC5701"/>.
       </t>
+      <t>
+        The two-octet AS-specific Extended Community <xref target="two-octet-as-ec"/> defined in this document does not
+        support non-mappable four-octet AS Numbers <xref target="RFC6793"/>.
+        The use of four-octet AS-specific Extended Communities <xref target="RFC5668"/> should be considered where
+        support for four-octet AS Numbers is desired.
+      </t>
       <section title="Requirements Language" anchor="requirements">
         <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
           "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT
